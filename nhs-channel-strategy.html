@@ -1,0 +1,898 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NHS Supplier Channel — SustainZone Strategy</title>
+<style>
+  :root {
+    --bg: #0a0c10;
+    --surface: #111318;
+    --surface2: #181c24;
+    --surface3: #1e2330;
+    --border: rgba(255,255,255,0.07);
+    --green: #00e676;
+    --teal: #00bcd4;
+    --blue: #448aff;
+    --amber: #ffc107;
+    --red: #ff5252;
+    --purple: #7c4dff;
+    --nhs-blue: #005eb8;
+    --nhs-light: #41b6e6;
+    --text: #e8eaf0;
+    --muted: #7a8499;
+    --accent-grad: linear-gradient(135deg, #00e676, #00bcd4);
+    --nhs-grad: linear-gradient(135deg, #005eb8, #41b6e6);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    line-height: 1.65;
+    font-size: 15px;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    padding: 80px 64px 56px;
+    max-width: 1240px;
+    margin: 0 auto;
+    border-bottom: 1px solid var(--border);
+  }
+  .hero-label {
+    font-size: 11px; letter-spacing: 3px; text-transform: uppercase;
+    color: var(--nhs-light); margin-bottom: 20px; font-weight: 600;
+  }
+  .hero h1 {
+    font-size: clamp(34px, 4.5vw, 58px);
+    font-weight: 800; line-height: 1.1; margin-bottom: 20px;
+    background: var(--nhs-grad);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+  .hero-sub { font-size: 17px; color: var(--muted); max-width: 720px; line-height: 1.75; }
+  .hero-insight {
+    margin-top: 28px;
+    padding: 20px 24px;
+    background: rgba(0,94,184,0.08);
+    border: 1px solid rgba(65,182,230,0.2);
+    border-radius: 12px;
+    max-width: 780px;
+    font-size: 15px;
+    line-height: 1.7;
+  }
+  .hero-insight strong { color: var(--nhs-light); }
+
+  /* ── LAYOUT ── */
+  .page { max-width: 1240px; margin: 0 auto; padding: 60px 64px; }
+  .section-label {
+    font-size: 11px; letter-spacing: 3px; text-transform: uppercase;
+    color: var(--nhs-light); margin-bottom: 10px; font-weight: 600;
+  }
+  .section-title { font-size: 26px; font-weight: 700; margin-bottom: 8px; }
+  .section-desc { color: var(--muted); margin-bottom: 36px; max-width: 700px; font-size: 15px; line-height: 1.7; }
+  hr.divider { border: none; border-top: 1px solid var(--border); margin: 56px 0; }
+
+  /* ── DEMAND FLOW DIAGRAM ── */
+  .flow-wrap {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 40px;
+    margin-bottom: 24px;
+  }
+  .flow-wrap h3 { font-size: 18px; font-weight: 700; margin-bottom: 6px; }
+  .flow-wrap .sub { color: var(--muted); font-size: 13px; margin-bottom: 36px; }
+
+  .flow-row {
+    display: flex;
+    align-items: stretch;
+    gap: 0;
+    margin-bottom: 0;
+  }
+  .flow-node {
+    flex: 1;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 22px 18px;
+    position: relative;
+    min-width: 0;
+  }
+  .flow-node.nhs {
+    border-color: rgba(0,94,184,0.5);
+    background: rgba(0,94,184,0.08);
+  }
+  .flow-node.intermediary {
+    border-color: rgba(65,182,230,0.3);
+    background: rgba(65,182,230,0.05);
+  }
+  .flow-node.sustainzone {
+    border-color: rgba(0,230,118,0.4);
+    background: rgba(0,230,118,0.06);
+  }
+  .flow-node.suppliers {
+    border-color: rgba(255,193,7,0.3);
+    background: rgba(255,193,7,0.04);
+  }
+  .flow-arrow-col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0 6px;
+    flex-shrink: 0;
+    gap: 4px;
+    min-width: 48px;
+  }
+  .arrow-icon { font-size: 20px; color: var(--muted); }
+  .arrow-label { font-size: 10px; color: var(--muted); text-align: center; line-height: 1.3; max-width: 60px; }
+  .flow-node-label {
+    font-size: 10px; text-transform: uppercase; letter-spacing: 1.5px;
+    font-weight: 700; margin-bottom: 8px;
+  }
+  .flow-node.nhs .flow-node-label { color: var(--nhs-light); }
+  .flow-node.intermediary .flow-node-label { color: var(--teal); }
+  .flow-node.sustainzone .flow-node-label { color: var(--green); }
+  .flow-node.suppliers .flow-node-label { color: var(--amber); }
+  .flow-node h4 { font-size: 15px; font-weight: 700; margin-bottom: 8px; }
+  .flow-node p { font-size: 12px; color: var(--muted); line-height: 1.5; }
+  .flow-node .stat {
+    margin-top: 12px;
+    font-size: 22px; font-weight: 800;
+    line-height: 1;
+  }
+  .flow-node.nhs .stat { color: var(--nhs-light); }
+  .flow-node.sustainzone .stat { color: var(--green); }
+  .flow-node.suppliers .stat { color: var(--amber); }
+  .stat-label { font-size: 10px; color: var(--muted); margin-top: 2px; }
+
+  /* ── ENTRY POINTS ── */
+  .entry-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-bottom: 24px;
+  }
+  .entry-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 28px 24px;
+    position: relative;
+    overflow: hidden;
+  }
+  .entry-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+  }
+  .entry-card.ppn::before { background: linear-gradient(90deg, #ff5252, #ff8a65); }
+  .entry-card.roadmap::before { background: var(--nhs-grad); }
+  .entry-card.gcloud::before { background: linear-gradient(90deg, #448aff, #7c4dff); }
+  .entry-urgency {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-size: 10px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 1px;
+    margin-bottom: 16px;
+  }
+  .urgent { background: rgba(255,82,82,0.15); color: var(--red); }
+  .live { background: rgba(0,94,184,0.2); color: var(--nhs-light); }
+  .enabler { background: rgba(68,138,255,0.15); color: var(--blue); }
+  .entry-card h3 { font-size: 17px; font-weight: 700; margin-bottom: 10px; }
+  .entry-card .ref {
+    font-size: 11px; color: var(--muted);
+    margin-bottom: 14px; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 1px;
+  }
+  .entry-card p { font-size: 13px; color: var(--muted); line-height: 1.65; margin-bottom: 14px; }
+  .entry-card .ask {
+    padding: 12px 14px;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 1.5;
+  }
+  .ppn .ask { background: rgba(255,82,82,0.07); color: #ef9a9a; border-left: 3px solid var(--red); }
+  .roadmap .ask { background: rgba(0,94,184,0.1); color: var(--nhs-light); border-left: 3px solid var(--nhs-light); }
+  .gcloud .ask { background: rgba(68,138,255,0.08); color: #90caf9; border-left: 3px solid var(--blue); }
+
+  /* ── STAKEHOLDER MAP ── */
+  .stakeholder-wrap {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 40px;
+    margin-bottom: 24px;
+  }
+  .stakeholder-wrap h3 { font-size: 18px; font-weight: 700; margin-bottom: 8px; }
+  .stakeholder-wrap .sub { color: var(--muted); font-size: 13px; margin-bottom: 32px; }
+  .stakeholder-tiers {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .sh-tier {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+  }
+  .sh-tier-label {
+    min-width: 100px;
+    padding-top: 12px;
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+  }
+  .sh-tier.t1 .sh-tier-label { color: var(--red); }
+  .sh-tier.t2 .sh-tier-label { color: var(--nhs-light); }
+  .sh-tier.t3 .sh-tier-label { color: var(--amber); }
+  .sh-tier.t4 .sh-tier-label { color: var(--green); }
+  .sh-cards { display: flex; gap: 12px; flex-wrap: wrap; flex: 1; }
+  .sh-card {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 16px 18px;
+    flex: 1;
+    min-width: 180px;
+  }
+  .sh-card h4 { font-size: 13px; font-weight: 700; margin-bottom: 4px; }
+  .sh-card .sh-role { font-size: 11px; color: var(--muted); margin-bottom: 8px; line-height: 1.4; }
+  .sh-card .sh-ask {
+    font-size: 11px; font-style: italic;
+    line-height: 1.5;
+  }
+  .sh-tier.t1 .sh-card { border-color: rgba(255,82,82,0.2); }
+  .sh-tier.t2 .sh-card { border-color: rgba(65,182,230,0.2); }
+  .sh-tier.t3 .sh-card { border-color: rgba(255,193,7,0.2); }
+  .sh-tier.t4 .sh-card { border-color: rgba(0,230,118,0.2); }
+  .sh-tier.t1 .sh-card .sh-ask { color: #ef9a9a; }
+  .sh-tier.t2 .sh-card .sh-ask { color: var(--nhs-light); }
+  .sh-tier.t3 .sh-card .sh-ask { color: #ffe082; }
+  .sh-tier.t4 .sh-card .sh-ask { color: #a5d6a7; }
+
+  /* ── SUPPLIER SEGMENTATION ── */
+  .seg-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-bottom: 24px;
+  }
+  .seg-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 28px 24px;
+    position: relative;
+  }
+  .seg-tier-badge {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 10px; font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    letter-spacing: 1px;
+  }
+  .seg-card.large .seg-tier-badge { background: rgba(255,82,82,0.15); color: var(--red); }
+  .seg-card.mid .seg-tier-badge { background: rgba(0,94,184,0.2); color: var(--nhs-light); }
+  .seg-card.sme .seg-tier-badge { background: rgba(0,230,118,0.12); color: var(--green); }
+  .seg-threshold {
+    font-size: 22px; font-weight: 800;
+    margin-bottom: 4px; line-height: 1;
+  }
+  .seg-card.large .seg-threshold { color: var(--red); }
+  .seg-card.mid .seg-threshold { color: var(--nhs-light); }
+  .seg-card.sme .seg-threshold { color: var(--green); }
+  .seg-count { font-size: 11px; color: var(--muted); margin-bottom: 16px; }
+  .seg-card h3 { font-size: 15px; font-weight: 700; margin-bottom: 12px; }
+  .seg-card p { font-size: 13px; color: var(--muted); line-height: 1.6; margin-bottom: 12px; }
+  .seg-model {
+    padding: 12px 14px;
+    border-radius: 8px;
+    font-size: 12px;
+    line-height: 1.6;
+  }
+  .seg-card.large .seg-model { background: rgba(255,82,82,0.06); color: #ef9a9a; }
+  .seg-card.mid .seg-model { background: rgba(0,94,184,0.08); color: var(--nhs-light); }
+  .seg-card.sme .seg-model { background: rgba(0,230,118,0.06); color: #a5d6a7; }
+  .seg-label { font-size: 10px; text-transform: uppercase; letter-spacing: 1px; font-weight: 700; margin-bottom: 4px; }
+  .seg-card.large .seg-label { color: var(--red); }
+  .seg-card.mid .seg-label { color: var(--nhs-light); }
+  .seg-card.sme .seg-label { color: var(--green); }
+
+  /* ── SEQUENCING TIMELINE ── */
+  .timeline-wrap {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 40px;
+    margin-bottom: 24px;
+  }
+  .timeline-wrap h3 { font-size: 18px; font-weight: 700; margin-bottom: 8px; }
+  .timeline-wrap .sub { color: var(--muted); font-size: 13px; margin-bottom: 36px; }
+  .timeline { display: flex; flex-direction: column; gap: 0; position: relative; }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 110px;
+    top: 0; bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--nhs-light), var(--green));
+    opacity: 0.3;
+  }
+  .tl-item {
+    display: flex;
+    gap: 24px;
+    align-items: flex-start;
+    padding-bottom: 32px;
+    position: relative;
+  }
+  .tl-item:last-child { padding-bottom: 0; }
+  .tl-time {
+    min-width: 100px;
+    text-align: right;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding-top: 14px;
+    color: var(--muted);
+    flex-shrink: 0;
+  }
+  .tl-dot {
+    width: 14px; height: 14px;
+    border-radius: 50%;
+    border: 2px solid;
+    flex-shrink: 0;
+    margin-top: 12px;
+    position: relative;
+    z-index: 1;
+    background: var(--bg);
+  }
+  .tl-item.now .tl-dot { border-color: var(--red); background: var(--red); }
+  .tl-item.q2 .tl-dot { border-color: var(--nhs-light); }
+  .tl-item.q3 .tl-dot { border-color: var(--amber); }
+  .tl-item.q4 .tl-dot { border-color: var(--green); }
+  .tl-item.year2 .tl-dot { border-color: var(--green); background: var(--green); }
+  .tl-content {
+    flex: 1;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 16px 20px;
+  }
+  .tl-item.now .tl-content { border-color: rgba(255,82,82,0.25); }
+  .tl-item.q2 .tl-content { border-color: rgba(65,182,230,0.2); }
+  .tl-item.q3 .tl-content { border-color: rgba(255,193,7,0.2); }
+  .tl-item.q4 .tl-content { border-color: rgba(0,230,118,0.2); }
+  .tl-item.year2 .tl-content { border-color: rgba(0,230,118,0.35); }
+  .tl-content h4 { font-size: 15px; font-weight: 700; margin-bottom: 6px; }
+  .tl-content p { font-size: 13px; color: var(--muted); line-height: 1.6; }
+  .tl-tags { display: flex; gap: 8px; margin-top: 10px; flex-wrap: wrap; }
+  .tl-tag {
+    padding: 2px 10px;
+    border-radius: 4px;
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    background: rgba(255,255,255,0.06);
+    color: var(--muted);
+  }
+
+  /* ── REVENUE MODEL ── */
+  .rev-wrap {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 40px;
+    margin-bottom: 24px;
+  }
+  .rev-wrap h3 { font-size: 18px; font-weight: 700; margin-bottom: 8px; }
+  .rev-wrap .sub { color: var(--muted); font-size: 13px; margin-bottom: 32px; }
+  .rev-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .rev-stream {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 22px 20px;
+  }
+  .rev-stream h4 { font-size: 14px; font-weight: 700; margin-bottom: 6px; }
+  .rev-who { font-size: 11px; color: var(--muted); margin-bottom: 12px; text-transform: uppercase; letter-spacing: 1px; font-weight: 600; }
+  .rev-model-label { font-size: 11px; color: var(--muted); margin-bottom: 4px; }
+  .rev-model-val { font-size: 20px; font-weight: 800; margin-bottom: 12px; }
+  .rev-stream:nth-child(1) .rev-model-val { color: var(--red); }
+  .rev-stream:nth-child(2) .rev-model-val { color: var(--nhs-light); }
+  .rev-stream:nth-child(3) .rev-model-val { color: var(--green); }
+  .rev-desc { font-size: 12px; color: var(--muted); line-height: 1.6; }
+  .rev-note {
+    margin-top: 20px;
+    padding: 14px 16px;
+    background: rgba(65,182,230,0.06);
+    border-left: 3px solid var(--nhs-light);
+    border-radius: 0 8px 8px 0;
+    font-size: 13px;
+    line-height: 1.65;
+    color: var(--text);
+  }
+
+  /* ── KEY RISK ── */
+  .risk-card {
+    background: var(--surface);
+    border: 1px solid rgba(255,193,7,0.2);
+    border-radius: 14px;
+    padding: 32px 36px;
+    display: flex;
+    gap: 24px;
+    margin-bottom: 24px;
+  }
+  .risk-icon { font-size: 28px; flex-shrink: 0; }
+  .risk-card h3 { font-size: 17px; font-weight: 700; color: var(--amber); margin-bottom: 10px; }
+  .risk-card p { font-size: 14px; color: var(--muted); line-height: 1.75; }
+  .risk-rule {
+    margin-top: 14px;
+    padding: 12px 16px;
+    background: rgba(255,193,7,0.06);
+    border-left: 3px solid var(--amber);
+    border-radius: 0 8px 8px 0;
+    font-size: 13px; font-weight: 600;
+    color: var(--amber);
+  }
+
+  /* ── FOOTER ── */
+  .footer {
+    border-top: 1px solid var(--border);
+    padding: 28px 64px;
+    max-width: 1240px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  .footer-brand { font-size: 13px; color: var(--muted); }
+  .footer-brand strong { color: var(--text); }
+  .footer-date { font-size: 12px; color: var(--muted); }
+
+  @media (max-width: 780px) {
+    .hero, .page { padding: 36px 20px; }
+    .entry-grid, .seg-grid, .rev-grid { grid-template-columns: 1fr; }
+    .flow-row { flex-direction: column; }
+    .flow-arrow-col { flex-direction: row; transform: rotate(90deg); }
+    .sh-cards { flex-direction: column; }
+    .timeline::before { left: 84px; }
+    .tl-time { min-width: 74px; font-size: 10px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-label">SustainZone · NHS Channel Strategy · March 2026</div>
+  <h1>Crack the NHS Channel.<br>68,000 Suppliers Follow.</h1>
+  <p class="hero-sub">The NHS doesn't buy SaaS tools for its suppliers. It creates compliance obligations, then suppliers choose tools to meet them. The channel strategy is not selling to the NHS — it is getting the NHS to send demand to SustainZone.</p>
+  <div class="hero-insight">
+    <strong>The core distinction:</strong> Revenue comes from suppliers. Recognition comes from the NHS. These are two completely separate relationships requiring two separate asks — and they must be sequenced in the right order. Recognition first, revenue second.
+  </div>
+</div>
+
+<div class="page">
+
+  <!-- SECTION 1: DEMAND FLOW -->
+  <div class="section-label">How the Channel Works</div>
+  <div class="section-title">The Demand Flow: Policy to Platform</div>
+  <p class="section-desc">NHS policy creates a compliance obligation. That obligation flows through intermediaries and procurement bodies. SustainZone intercepts that flow by getting recognised at the policy layer — before suppliers start searching for tools.</p>
+
+  <div class="flow-wrap">
+    <h3>The Five-Node Demand Chain</h3>
+    <p class="sub">SustainZone's target is node 3 — recognition at the intermediary layer, before supplier demand disperses to generic tools</p>
+    <div class="flow-row">
+      <div class="flow-node nhs">
+        <div class="flow-node-label">Policy Origin</div>
+        <h4>NHS England / DHSC</h4>
+        <p>Sets Net Zero mandate. Publishes Supplier Roadmap. Drives PPN 06/21 compliance requirements across all central government procurement.</p>
+        <div class="stat">Policy</div>
+        <div class="stat-label">Greener NHS Programme</div>
+      </div>
+      <div class="flow-arrow-col">
+        <div class="arrow-icon">→</div>
+        <div class="arrow-label">mandate flows down</div>
+      </div>
+      <div class="flow-node nhs">
+        <div class="flow-node-label">Procurement Body</div>
+        <h4>NHS Supply Chain</h4>
+        <p>Manages ~£7bn annual spend. Publishes Supplier Sustainability Toolkit. Directly instructs tens of thousands of NHS suppliers on compliance requirements.</p>
+        <div class="stat">£7bn</div>
+        <div class="stat-label">annual managed spend</div>
+      </div>
+      <div class="flow-arrow-col">
+        <div class="arrow-icon">→</div>
+        <div class="arrow-label">toolkit directs suppliers</div>
+      </div>
+      <div class="flow-node sustainzone">
+        <div class="flow-node-label">★ Intercept Point</div>
+        <h4>SustainZone Listed Here</h4>
+        <p>Get SustainZone included in the NHS Supply Chain Supplier Sustainability Toolkit as the recommended Scope 3 reporting tool. This single listing is the channel unlock.</p>
+        <div class="stat">1 ask</div>
+        <div class="stat-label">single listing = full channel</div>
+      </div>
+      <div class="flow-arrow-col">
+        <div class="arrow-icon">→</div>
+        <div class="arrow-label">suppliers choose tools</div>
+      </div>
+      <div class="flow-node suppliers">
+        <div class="flow-node-label">End Market</div>
+        <h4>NHS Suppliers</h4>
+        <p>68,000+ active suppliers across medical devices, pharma, catering, estates, logistics, professional services. All facing disclosure obligations.</p>
+        <div class="stat">68k+</div>
+        <div class="stat-label">suppliers in scope</div>
+      </div>
+      <div class="flow-arrow-col">
+        <div class="arrow-icon">→</div>
+        <div class="arrow-label">pay for access</div>
+      </div>
+      <div class="flow-node sustainzone">
+        <div class="flow-node-label">Revenue</div>
+        <h4>SustainZone Platform</h4>
+        <p>Subscription revenue from suppliers. Not from the NHS. The NHS relationship is distribution. The supplier relationship is commercial.</p>
+        <div class="stat">ARR</div>
+        <div class="stat-label">supplier subscriptions</div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- SECTION 2: THREE ENTRY POINTS -->
+  <div class="section-label">Entry Points</div>
+  <div class="section-title">Three Specific Doors Into the NHS System</div>
+  <p class="section-desc">The NHS compliance landscape has three distinct mechanisms that create supplier demand for carbon accounting tools. Each requires a different relationship and a different ask.</p>
+
+  <div class="entry-grid">
+    <div class="entry-card ppn">
+      <div class="entry-urgency urgent">Live Now · Mandatory</div>
+      <div class="ref">PPN 06/21</div>
+      <h3>Procurement Policy Note 06/21</h3>
+      <p>All suppliers bidding for central government contracts over £5m must submit a Carbon Reduction Plan covering Scope 1, 2, and 3 emissions. This is already law. Thousands of NHS suppliers are either non-compliant or producing CRPs that lack Scope 3 rigour.</p>
+      <p>SustainZone's adaptive Scope 3 engine is precisely what CRP production requires — sector-specific, assumption-documented, confidence-scored. This is not a future opportunity. The burning platform is lit.</p>
+      <div class="ask">
+        The ask: Position SustainZone explicitly as a "PPN 06/21 Scope 3 CRP tool." Build a one-page mapping of SustainZone outputs to CRP requirements. Use this as the anchor sales document for all NHS supplier conversations.
+      </div>
+    </div>
+    <div class="entry-card roadmap">
+      <div class="entry-urgency live">NHS-Specific · Escalating</div>
+      <div class="ref">NHS Supplier Roadmap</div>
+      <h3>NHS Net Zero Supplier Roadmap</h3>
+      <p>NHS England's Supplier Roadmap requires large suppliers (&gt;£5m NHS spend) to report full Scope 1, 2, 3 and have a verified Net Zero plan. Medium suppliers (£1m–£5m) must report Scope 1+2 with a plan. Milestones escalate annually through 2030.</p>
+      <p>The Greener NHS Programme Office at NHS England owns this. A relationship with this team converts to formal endorsement language in the Roadmap guidance — which is updated annually and distributed to all suppliers.</p>
+      <div class="ask">
+        The ask: Meet with Greener NHS Programme team. Offer to co-design the Scope 3 methodology guidance section of the 2026 Supplier Roadmap update. Recognition in that document is worth more than any paid campaign.
+      </div>
+    </div>
+    <div class="entry-card gcloud">
+      <div class="entry-urgency enabler">Procurement Enabler</div>
+      <div class="ref">G-Cloud / CCS Framework</div>
+      <h3>Crown Commercial Service Listing</h3>
+      <p>All NHS bodies procure software through G-Cloud — the Crown Commercial Service's cloud software framework. A G-Cloud listing (Lot 2: Cloud Software) makes SustainZone directly procurable by any NHS trust, ICB, or procurement body without a full tender process.</p>
+      <p>This is not how suppliers buy the tool — they buy direct. But G-Cloud listing makes SustainZone procurable for any NHS body that wants to co-fund supplier access as part of their own Scope 3 Category 1 improvement programme.</p>
+      <div class="ask">
+        The ask: Apply for G-Cloud 14 listing under Lot 2. This is a prerequisite for any NHS body that wants to procure and distribute SustainZone access to their supplier base — which is exactly the buyer-funds-supplier model that unlocks the highest volume.
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- SECTION 3: STAKEHOLDER MAP -->
+  <div class="section-label">Who to Call and What to Say</div>
+  <div class="section-title">Stakeholder Priority Map</div>
+  <p class="section-desc">Four tiers of NHS-ecosystem stakeholders, ordered by their ability to activate the channel. The first tier sets the signal. The fourth tier generates the revenue.</p>
+
+  <div class="stakeholder-wrap">
+    <h3>NHS Ecosystem Stakeholders — Priority Order</h3>
+    <p class="sub">Sequencing matters. Arrive at Tier 4 with Tier 1 recognition already in hand, and the sales conversation changes entirely.</p>
+    <div class="stakeholder-tiers">
+      <div class="sh-tier t1">
+        <div class="sh-tier-label">Tier 1<br>Signal Setters</div>
+        <div class="sh-cards">
+          <div class="sh-card">
+            <h4>Greener NHS Programme</h4>
+            <div class="sh-role">NHS England — national sustainability programme office. Owns the Supplier Roadmap and all NHS Net Zero supplier guidance.</div>
+            <div class="sh-ask">"Co-design the Scope 3 methodology guidance in the 2026 Supplier Roadmap update. Offer the framework free — recognition is the return."</div>
+          </div>
+          <div class="sh-card">
+            <h4>NHS Supply Chain — Sustainability Lead</h4>
+            <div class="sh-role">Manages £7bn spend. Publishes Supplier Sustainability Toolkit. Direct line to tens of thousands of active NHS suppliers.</div>
+            <div class="sh-ask">"List SustainZone in the Supplier Sustainability Toolkit as the recommended Scope 3 reporting approach. One paragraph. Whole channel unlocked."</div>
+          </div>
+        </div>
+      </div>
+      <div class="sh-tier t2">
+        <div class="sh-tier-label">Tier 2<br>Amplifiers</div>
+        <div class="sh-cards">
+          <div class="sh-card">
+            <h4>NHS Shared Business Services</h4>
+            <div class="sh-role">Back-office services to NHS trusts. Finance, procurement, HR. Sits between trusts and their suppliers regularly.</div>
+            <div class="sh-ask">"Embed SustainZone in NHS SBS supplier onboarding and procurement advisory services. They talk to the right people daily."</div>
+          </div>
+          <div class="sh-card">
+            <h4>NHS Procurement & Commercial</h4>
+            <div class="sh-role">PCF team at DHSC. Sets procurement standards and supplier assurance requirements for NHS bodies nationally.</div>
+            <div class="sh-ask">"Align SustainZone outputs to NHS supplier assurance standards. Make the tool's output the standard reference format for carbon in NHS procurement."</div>
+          </div>
+          <div class="sh-card">
+            <h4>ICBs — Sustainability Leads</h4>
+            <div class="sh-role">Integrated Care Boards hold regional NHS supplier relationships. Each ICB has a sustainability lead post-ICS reform.</div>
+            <div class="sh-ask">"Target 3–5 ICBs as regional pilot partners. Each can co-fund SME supplier access in their patch. Regional proof scales nationally."</div>
+          </div>
+        </div>
+      </div>
+      <div class="sh-tier t3">
+        <div class="sh-tier-label">Tier 3<br>Industry Bodies</div>
+        <div class="sh-cards">
+          <div class="sh-card">
+            <h4>ABHI</h4>
+            <div class="sh-role">Association of British HealthTech Industries. Trade body for NHS medical device suppliers. 300+ member companies.</div>
+            <div class="sh-ask">"Become ABHI's recommended Scope 3 partner. One partnership, 300 warm leads in the highest-spend NHS supplier category."</div>
+          </div>
+          <div class="sh-card">
+            <h4>NHS Confederation</h4>
+            <div class="sh-role">Represents NHS trusts and bodies. Runs events, communications, and policy engagement across the NHS system.</div>
+            <div class="sh-ask">"Speak at NHS Confederation events on Scope 3 compliance. Position SustainZone as the methodology reference in supplier sustainability."</div>
+          </div>
+          <div class="sh-card">
+            <h4>BIVDA / BSiF</h4>
+            <div class="sh-role">Diagnostics and safety product supplier trade bodies. Both have sustainability committees actively managing NHS compliance obligations.</div>
+            <div class="sh-ask">"Same playbook as ABHI. Each trade body partnership is a concentrated beachhead in one supplier vertical."</div>
+          </div>
+        </div>
+      </div>
+      <div class="sh-tier t4">
+        <div class="sh-tier-label">Tier 4<br>Revenue</div>
+        <div class="sh-cards">
+          <div class="sh-card">
+            <h4>Large NHS Suppliers (&gt;£5m)</h4>
+            <div class="sh-role">Full Scope 1, 2, 3 + Net Zero plan mandatory. Enterprise accounts. Direct sales, high-touch. 3–5 marquee clients first for reference credibility.</div>
+            <div class="sh-ask">"Sign 3 marquee NHS suppliers — ideally one medical device, one facilities management, one logistics — as reference clients before approaching NHS Supply Chain."</div>
+          </div>
+          <div class="sh-card">
+            <h4>Mid-Market Suppliers (£1m–£5m)</h4>
+            <div class="sh-role">Scope 1+2 mandatory, Scope 3 strongly encouraged. Self-serve with advisory upsell. Largest revenue segment by volume.</div>
+            <div class="sh-ask">"Self-serve entry with guided onboarding. Upsell gap analysis advisory. This is the volume engine once the channel is open."</div>
+          </div>
+          <div class="sh-card">
+            <h4>SME Suppliers (&lt;£1m)</h4>
+            <div class="sh-role">Not yet mandated but under growing pressure. Co-funded access model — ICBs or NHS Supply Chain subsidise access as part of their own Scope 3 Category 1 improvement.</div>
+            <div class="sh-ask">"Free or subsidised tier funded by NHS bodies wanting better upstream supplier data for their own Category 1 Scope 3. Revenue comes from the funder, not the SME."</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- SECTION 4: SUPPLIER SEGMENTATION -->
+  <div class="section-label">Commercial Model by Segment</div>
+  <div class="section-title">Three Supplier Segments — Three Revenue Structures</div>
+  <p class="section-desc">The NHS supplier base spans enterprise to micro-SME. One pricing model cannot serve all three. Each segment requires a different commercial structure — and the SME segment inverts the model entirely.</p>
+
+  <div class="seg-grid">
+    <div class="seg-card large">
+      <div class="seg-tier-badge">Enterprise Tier</div>
+      <div class="seg-threshold">&gt;£5m NHS</div>
+      <div class="seg-count">~2,000 suppliers · Full Scope 3 mandatory</div>
+      <h3>Large NHS Suppliers</h3>
+      <p>Full Scope 1, 2, 3 disclosure and verified Net Zero plan required. These are substantial organisations with internal sustainability functions or budget for external support.</p>
+      <p>Direct sales motion. High-touch onboarding. Annual contract. Upsell: gap analysis advisory, supplier engagement programme, confidence score certification.</p>
+      <div class="seg-label">Commercial Model</div>
+      <div class="seg-model">
+        Enterprise subscription + advisory services.<br>
+        Target: £8,000–£25,000 ARR per client.<br>
+        Sales cycle: 6–12 weeks. CFO / Head of Sustainability buyer.
+      </div>
+    </div>
+    <div class="seg-card mid">
+      <div class="seg-tier-badge">Mid-Market Tier</div>
+      <div class="seg-threshold">£1m–£5m</div>
+      <div class="seg-count">~8,000 suppliers · Scope 1+2 mandatory, Scope 3 expected</div>
+      <h3>Mid-Market NHS Suppliers</h3>
+      <p>Mandatory for Scope 1+2. Strong guidance pressure on Scope 3. Typically no internal sustainability resource. Need a tool that is fast to implement, credible on output, and doesn't require a consultant.</p>
+      <p>Self-serve with structured onboarding. Sector archetype routing removes the need for specialist knowledge. Advisory upsell for gap analysis and improvement roadmaps.</p>
+      <div class="seg-label">Commercial Model</div>
+      <div class="seg-model">
+        Self-serve subscription + advisory add-ons.<br>
+        Target: £1,500–£6,000 ARR per client.<br>
+        Sales cycle: 2–4 weeks. Finance Director or Operations Manager buyer.
+      </div>
+    </div>
+    <div class="seg-card sme">
+      <div class="seg-tier-badge">SME / Inverted Model</div>
+      <div class="seg-threshold">&lt;£1m NHS</div>
+      <div class="seg-count">~58,000 suppliers · Compliance pressure building</div>
+      <h3>SME NHS Suppliers</h3>
+      <p>Not yet mandated but facing growing disclosure requests from NHS trusts and procurement teams. Cannot afford enterprise tools. This segment inverts the commercial model — the buyer is not the supplier.</p>
+      <p>NHS bodies (ICBs, NHS Supply Chain) want better Category 1 data from their SME suppliers. They have the financial motivation to fund SME access — it improves their own Scope 3 accuracy.</p>
+      <div class="seg-label">Commercial Model</div>
+      <div class="seg-model">
+        Buyer-funds-supplier. NHS body pays for cohort access.<br>
+        Target: £150–£500 per SME slot, billed to NHS funder.<br>
+        Volume play — 100 SMEs per ICB partnership = significant ARR.
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- SECTION 5: SEQUENCING TIMELINE -->
+  <div class="section-label">Execution Sequence</div>
+  <div class="section-title">The Precise Order of Moves</div>
+  <p class="section-desc">Sequence is everything. Arriving at NHS Supply Chain without a reference client looks like a startup pitch. Arriving with three marquee clients and a validated methodology looks like infrastructure. The order of moves determines the reception.</p>
+
+  <div class="timeline-wrap">
+    <h3>18-Month Channel Build Sequence</h3>
+    <p class="sub">Each step creates the credibility required for the next. Do not compress or reorder.</p>
+    <div class="timeline">
+      <div class="tl-item now">
+        <div class="tl-time">Now<br>Q1 2026</div>
+        <div class="tl-dot"></div>
+        <div class="tl-content">
+          <h4>Sign Three Marquee NHS Supplier Clients</h4>
+          <p>One medical device company, one facilities/estates management company, one logistics/distribution supplier. These become reference clients and provide the sector data to build the healthcare archetype. Without these, the NHS Supply Chain conversation is a pitch. With them, it is a proof-point presentation.</p>
+          <div class="tl-tags">
+            <span class="tl-tag">Reference cases</span>
+            <span class="tl-tag">Archetype data</span>
+            <span class="tl-tag">Revenue start</span>
+          </div>
+        </div>
+      </div>
+      <div class="tl-item q2">
+        <div class="tl-time">Q2 2026</div>
+        <div class="tl-dot"></div>
+        <div class="tl-content">
+          <h4>Publish the PPN 06/21 Compliance Mapping</h4>
+          <p>Produce a one-page technical document mapping SustainZone's output fields to PPN 06/21 CRP requirements. Have it reviewed by a sustainability legal or assurance professional. Publish it on the SustainZone website. This becomes the anchor document for every NHS supplier sales conversation and the basis for the NHS Supply Chain toolkit inclusion request.</p>
+          <div class="tl-tags">
+            <span class="tl-tag">Sales anchor doc</span>
+            <span class="tl-tag">Regulatory alignment</span>
+            <span class="tl-tag">Content credibility</span>
+          </div>
+        </div>
+      </div>
+      <div class="tl-item q2">
+        <div class="tl-time">Q2 2026</div>
+        <div class="tl-dot"></div>
+        <div class="tl-content">
+          <h4>Apply for G-Cloud 14 Listing</h4>
+          <p>Submit SustainZone to CCS G-Cloud Lot 2 (Cloud Software). This is a process, not a relationship — but it is a prerequisite for the buyer-funds-supplier model. NHS bodies cannot procure or co-fund tools that are not on approved frameworks. This step is administrative but blocking for the SME segment commercial model.</p>
+          <div class="tl-tags">
+            <span class="tl-tag">Public sector procurement</span>
+            <span class="tl-tag">SME model enabler</span>
+            <span class="tl-tag">CCS framework</span>
+          </div>
+        </div>
+      </div>
+      <div class="tl-item q3">
+        <div class="tl-time">Q3 2026</div>
+        <div class="tl-dot"></div>
+        <div class="tl-content">
+          <h4>Approach NHS Supply Chain with Three Client References</h4>
+          <p>Present to NHS Supply Chain's sustainability team with: three live client case studies, the PPN 06/21 mapping document, the healthcare sector archetype, and a specific ask — inclusion in the Supplier Sustainability Toolkit as the recommended Scope 3 reporting approach. The meeting should be framed not as a sales call but as a methodology alignment session. The ask is a listing, not a contract.</p>
+          <div class="tl-tags">
+            <span class="tl-tag">Channel unlock meeting</span>
+            <span class="tl-tag">Toolkit listing request</span>
+            <span class="tl-tag">No revenue from NHS</span>
+          </div>
+        </div>
+      </div>
+      <div class="tl-item q3">
+        <div class="tl-time">Q3 2026</div>
+        <div class="tl-dot"></div>
+        <div class="tl-content">
+          <h4>Partner with Two NHS Trade Bodies (ABHI Priority)</h4>
+          <p>Approach ABHI (medical devices) and one of BIVDA or BSiF. Offer a members-only introductory rate and a sector-specific archetype built for their industry segment. The trade body promotes to members. SustainZone provides the tool and co-brands the materials. This is not a revenue partnership — it is a distribution partnership. Revenue comes from member subscriptions.</p>
+          <div class="tl-tags">
+            <span class="tl-tag">Trade body partnership</span>
+            <span class="tl-tag">300+ warm leads</span>
+            <span class="tl-tag">Co-branded distribution</span>
+          </div>
+        </div>
+      </div>
+      <div class="tl-item q4">
+        <div class="tl-time">Q4 2026</div>
+        <div class="tl-dot"></div>
+        <div class="tl-content">
+          <h4>Launch Pilot ICB Buyer-Funds-Supplier Programme</h4>
+          <p>Approach two or three ICBs with a structured proposal: they fund SustainZone access for 50–100 SME suppliers in their patch, improving their own Category 1 Scope 3 data quality. Price at £250 per SME slot billed to the ICB. The ICB gets better upstream data and a credible supplier sustainability programme to report. SustainZone gets volume and a public sector case study at scale.</p>
+          <div class="tl-tags">
+            <span class="tl-tag">ICB-funded model</span>
+            <span class="tl-tag">SME volume</span>
+            <span class="tl-tag">Category 1 data improvement</span>
+          </div>
+        </div>
+      </div>
+      <div class="tl-item year2">
+        <div class="tl-time">2027</div>
+        <div class="tl-dot"></div>
+        <div class="tl-content">
+          <h4>NHS Supplier Roadmap Recognition + National Scale</h4>
+          <p>With NHS Supply Chain listing, G-Cloud listing, ABHI partnership, and ICB pilot results in hand, approach Greener NHS to be formally referenced in the 2027 Supplier Roadmap guidance update. This is the milestone that converts the channel from a pipeline to infrastructure. At this point, the NHS system itself is directing supplier demand to SustainZone without further sales effort required.</p>
+          <div class="tl-tags">
+            <span class="tl-tag">Policy-level recognition</span>
+            <span class="tl-tag">Passive inbound demand</span>
+            <span class="tl-tag">Channel fully open</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- SECTION 6: REVENUE MODEL -->
+  <div class="section-label">How the Money Flows</div>
+  <div class="section-title">Three Revenue Streams, One Channel</div>
+  <p class="section-desc">The NHS relationship is the distribution engine. The commercial relationships are with suppliers and NHS bodies — not with NHS England itself. Keep those two relationships entirely separate in every conversation.</p>
+
+  <div class="rev-wrap">
+    <h3>NHS Channel Revenue Architecture</h3>
+    <p class="sub">All revenue flows from suppliers and NHS procurement bodies — never from NHS England or the policy layer</p>
+    <div class="rev-grid">
+      <div class="rev-stream">
+        <h4>Direct Enterprise Subscriptions</h4>
+        <div class="rev-who">Large NHS Suppliers (&gt;£5m spend)</div>
+        <div class="rev-model-label">Target ARR per client</div>
+        <div class="rev-model-val">£8k–£25k</div>
+        <div class="rev-desc">Direct sales to sustainability leads, finance directors, and procurement heads at large NHS suppliers. Full platform access, advisory upsell, annual contract. ~2,000 addressable accounts. Conversion target: 5% in 3 years = 100 enterprise clients.</div>
+      </div>
+      <div class="rev-stream">
+        <h4>Self-Serve Mid-Market</h4>
+        <div class="rev-who">Mid-Market Suppliers (£1m–£5m)</div>
+        <div class="rev-model-label">Target ARR per client</div>
+        <div class="rev-model-val">£1.5k–£6k</div>
+        <div class="rev-desc">Product-led growth via trade body partnerships and NHS Supply Chain toolkit listing. Self-serve with guided archetype onboarding. ~8,000 addressable accounts. Volume engine. Advisory upsell on gap analysis and improvement roadmaps.</div>
+      </div>
+      <div class="rev-stream">
+        <h4>Buyer-Funds-Supplier (ICB Model)</h4>
+        <div class="rev-who">NHS Bodies Co-Funding SME Access</div>
+        <div class="rev-model-label">Target per SME slot</div>
+        <div class="rev-model-val">£250–£500</div>
+        <div class="rev-desc">ICBs and NHS Supply Chain fund cohort access for SME suppliers. Each ICB programme: 50–100 suppliers at £250–£500/slot. Revenue billed to NHS funder, not the SME. 10 ICB partnerships = £125k–£500k incremental ARR at near-zero sales cost.</div>
+      </div>
+    </div>
+    <div class="rev-note">
+      <strong>The insight that changes the model:</strong> NHS bodies have a direct financial incentive to improve their own Scope 3 Category 1 data — which means their SME suppliers' disclosures. Every £250 they spend on an SME slot improves the accuracy of their own NHS Net Zero reporting. SustainZone is not asking NHS bodies for charity. It is selling them a solution to their own data problem.
+    </div>
+  </div>
+
+  <!-- RISK CARD -->
+  <div class="risk-card">
+    <div class="risk-icon">⚠️</div>
+    <div>
+      <h3>The Risk That Kills the Channel</h3>
+      <p>The NHS system moves slowly, and recognition once given can be withdrawn. The single largest risk is receiving NHS Supply Chain toolkit listing before the methodology is independently validated — and then having an early client receive an audit challenge on their CRP that references SustainZone's output. One failed audit, covered in a trade association newsletter, poisons the whole channel. The NHS supplier community is small and well-networked. Reputational damage at this scale travels faster than any marketing campaign.</p>
+      <div class="risk-rule">
+        Rule: Do not seek NHS Supply Chain recognition until at least one SustainZone-produced CRP has been through a formal assurance review — by a Big 4 firm, a sustainability standard body, or an NHS-approved auditor — and passed. The reference clients are not just for the sales narrative. They are the methodology validation process.
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <div class="footer-brand"><strong>SustainZone Limited</strong> · NHS Channel Strategy</div>
+  <div class="footer-date">Confidential · March 2026</div>
+</div>
+
+</body>
+</html>
