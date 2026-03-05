@@ -1,0 +1,937 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NHS Healthcare Industry | SustainZone – Evergreen Assessment Specialists</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:    #0d2137;
+      --teal:    #1a6b6b;
+      --teal-mid:#22898a;
+      --teal-lt: #d4eeee;
+      --accent:  #2bbfbf;
+      --lime:    #5cba8a;
+      --lime-lt: #e8f7f0;
+      --slate:   #4a5568;
+      --body-bg: #f7f9fb;
+      --white:   #ffffff;
+      --red:     #c0392b;
+      --amber:   #d4830a;
+      --card-shadow: 0 4px 24px rgba(13,33,55,0.09);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--navy);
+      background: var(--white);
+      line-height: 1.65;
+    }
+
+    /* ─── NAV ─────────────────────────────────────────────────── */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: var(--navy);
+      padding: 0 5%;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 68px;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.18);
+    }
+    .nav-logo {
+      font-size: 1.4rem; font-weight: 700; color: var(--white);
+      letter-spacing: -0.5px;
+      text-decoration: none;
+    }
+    .nav-logo span { color: var(--accent); }
+    .nav-links { display: flex; gap: 32px; list-style: none; }
+    .nav-links a {
+      color: rgba(255,255,255,0.80); font-size: 0.875rem; font-weight: 500;
+      text-decoration: none; transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--accent); }
+    .nav-cta {
+      background: var(--accent); color: var(--navy);
+      padding: 9px 22px; border-radius: 6px;
+      font-weight: 700; font-size: 0.875rem;
+      text-decoration: none; transition: opacity 0.2s;
+    }
+    .nav-cta:hover { opacity: 0.88; }
+
+    /* ─── HERO ────────────────────────────────────────────────── */
+    .hero {
+      background: linear-gradient(135deg, var(--navy) 0%, #0e3a52 55%, var(--teal) 100%);
+      color: var(--white);
+      padding: 100px 5% 90px;
+      text-align: center;
+      position: relative; overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%232bbfbf' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      pointer-events: none;
+    }
+    .hero-badge {
+      display: inline-block;
+      background: rgba(43,191,191,0.18);
+      border: 1px solid rgba(43,191,191,0.45);
+      color: var(--accent);
+      font-size: 0.78rem; font-weight: 600; letter-spacing: 0.08em;
+      text-transform: uppercase; padding: 6px 16px; border-radius: 40px;
+      margin-bottom: 22px;
+    }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.2rem, 5vw, 3.6rem);
+      line-height: 1.18;
+      max-width: 860px; margin: 0 auto 22px;
+      font-weight: 700;
+    }
+    .hero h1 em { color: var(--accent); font-style: normal; }
+    .hero p {
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      max-width: 680px; margin: 0 auto 38px;
+      color: rgba(255,255,255,0.82);
+      font-weight: 300;
+    }
+    .hero-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+    .btn-primary {
+      background: var(--accent); color: var(--navy);
+      padding: 14px 32px; border-radius: 8px;
+      font-weight: 700; font-size: 1rem;
+      text-decoration: none; transition: transform 0.15s, opacity 0.15s;
+      display: inline-block;
+    }
+    .btn-primary:hover { transform: translateY(-2px); opacity: 0.92; }
+    .btn-outline {
+      background: transparent;
+      border: 2px solid rgba(255,255,255,0.5);
+      color: var(--white);
+      padding: 13px 30px; border-radius: 8px;
+      font-weight: 600; font-size: 1rem;
+      text-decoration: none; transition: border-color 0.2s, background 0.2s;
+      display: inline-block;
+    }
+    .btn-outline:hover { border-color: var(--accent); background: rgba(43,191,191,0.08); }
+
+    /* ─── URGENCY TICKER ─────────────────────────────────────── */
+    .ticker {
+      background: #0a1a2b;
+      padding: 14px 5%;
+      display: flex; align-items: center; gap: 20px;
+      overflow: hidden;
+    }
+    .ticker-label {
+      background: var(--red); color: white;
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 0.06em;
+      text-transform: uppercase; padding: 4px 12px; border-radius: 4px;
+      white-space: nowrap; flex-shrink: 0;
+    }
+    .ticker-items {
+      display: flex; gap: 48px;
+      animation: ticker 28s linear infinite;
+      white-space: nowrap;
+    }
+    .ticker-items span {
+      color: rgba(255,255,255,0.75); font-size: 0.85rem; font-weight: 500;
+    }
+    .ticker-items strong { color: var(--accent); }
+    @keyframes ticker {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* ─── SECTION COMMON ─────────────────────────────────────── */
+    section { padding: 88px 5%; }
+    .container { max-width: 1160px; margin: 0 auto; }
+    .section-label {
+      display: inline-block;
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--teal-mid);
+      margin-bottom: 12px;
+    }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.7rem, 3.5vw, 2.6rem);
+      font-weight: 700; line-height: 1.22;
+      margin-bottom: 16px;
+    }
+    .section-sub {
+      font-size: 1.05rem; color: var(--slate);
+      max-width: 680px; line-height: 1.7;
+    }
+    .divider { width: 52px; height: 4px; background: var(--accent); border-radius: 2px; margin: 18px 0 40px; }
+
+    /* ─── STATS ROW ───────────────────────────────────────────── */
+    .stats-section {
+      background: var(--teal);
+      padding: 56px 5%;
+    }
+    .stats-grid {
+      max-width: 1160px; margin: 0 auto;
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px;
+    }
+    .stat-card {
+      text-align: center; color: var(--white);
+    }
+    .stat-number {
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 800; line-height: 1.1;
+      color: var(--accent);
+    }
+    .stat-label { font-size: 0.9rem; opacity: 0.85; margin-top: 6px; line-height: 1.4; }
+
+    /* ─── WHAT IS EVERGREEN ───────────────────────────────────── */
+    .what-is { background: var(--body-bg); }
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: center; }
+    .feature-list { list-style: none; display: flex; flex-direction: column; gap: 20px; margin-top: 32px; }
+    .feature-list li {
+      display: flex; gap: 14px; align-items: flex-start;
+    }
+    .feat-icon {
+      width: 40px; height: 40px; border-radius: 10px;
+      background: var(--teal-lt); color: var(--teal);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; font-size: 1.1rem;
+    }
+    .feat-title { font-weight: 700; font-size: 0.95rem; margin-bottom: 3px; }
+    .feat-desc { font-size: 0.875rem; color: var(--slate); line-height: 1.55; }
+
+    .info-panel {
+      background: var(--navy);
+      border-radius: 16px; padding: 44px 40px; color: var(--white);
+    }
+    .info-panel h3 {
+      font-size: 1.3rem; font-weight: 700; margin-bottom: 20px;
+      color: var(--accent);
+    }
+    .info-row {
+      display: flex; gap: 12px; margin-bottom: 16px;
+      font-size: 0.875rem; line-height: 1.55;
+    }
+    .info-dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: var(--accent); flex-shrink: 0; margin-top: 6px;
+    }
+
+    /* ─── DEADLINE BANNER ────────────────────────────────────── */
+    .deadline-banner {
+      background: linear-gradient(90deg, #1a0f02 0%, #3d2005 100%);
+      padding: 56px 5%;
+    }
+    .deadline-inner {
+      max-width: 1160px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0;
+    }
+    .deadline-card {
+      padding: 32px 36px;
+      border-right: 1px solid rgba(255,255,255,0.1);
+    }
+    .deadline-card:last-child { border-right: none; }
+    .deadline-date {
+      font-size: 0.78rem; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase; color: #f0a050; margin-bottom: 10px;
+    }
+    .deadline-title { font-weight: 700; font-size: 1.05rem; color: var(--white); margin-bottom: 8px; }
+    .deadline-desc { font-size: 0.875rem; color: rgba(255,255,255,0.65); line-height: 1.55; }
+
+    /* ─── LEVELS ─────────────────────────────────────────────── */
+    .levels-section { background: var(--white); }
+    .levels-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-top: 48px;
+    }
+    .level-card {
+      border-radius: 14px; overflow: hidden;
+      box-shadow: var(--card-shadow);
+      transition: transform 0.2s;
+    }
+    .level-card:hover { transform: translateY(-5px); }
+    .level-header {
+      padding: 22px 24px;
+      color: white;
+    }
+    .level-header.l1 { background: #2e7d6b; }
+    .level-header.l2 { background: #1f6b7c; }
+    .level-header.l3 { background: #185580; }
+    .level-header.l4 { background: var(--navy); }
+    .level-num {
+      font-size: 2.4rem; font-weight: 800; opacity: 0.25;
+      line-height: 1; margin-bottom: 4px;
+    }
+    .level-name { font-weight: 700; font-size: 1rem; }
+    .level-tag {
+      display: inline-block; margin-top: 8px;
+      font-size: 0.7rem; font-weight: 600; letter-spacing: 0.06em;
+      text-transform: uppercase;
+      background: rgba(255,255,255,0.2); padding: 3px 10px; border-radius: 20px;
+    }
+    .level-body { padding: 22px 24px; background: white; }
+    .level-rows { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .level-rows li {
+      font-size: 0.82rem; color: var(--slate);
+      display: flex; gap: 8px; align-items: flex-start; line-height: 1.45;
+    }
+    .level-rows li::before {
+      content: '→'; color: var(--accent);
+      font-weight: 700; flex-shrink: 0; margin-top: 0px;
+    }
+    .level-mandatory {
+      margin-top: 16px; padding: 8px 12px; border-radius: 6px;
+      font-size: 0.77rem; font-weight: 600;
+    }
+    .level-mandatory.yes { background: #e8f7f0; color: #1a7a4a; }
+    .level-mandatory.no  { background: #fff4e6; color: #b36a00; }
+
+    /* ─── COMPARISON TABLE ───────────────────────────────────── */
+    .table-section { background: var(--body-bg); }
+    .responsive-table { width: 100%; border-collapse: collapse; margin-top: 40px; }
+    .responsive-table thead th {
+      background: var(--navy); color: white;
+      padding: 14px 18px; font-size: 0.85rem; font-weight: 600;
+      text-align: left;
+    }
+    .responsive-table thead th:first-child { border-radius: 10px 0 0 0; }
+    .responsive-table thead th:last-child  { border-radius: 0 10px 0 0; }
+    .responsive-table tbody tr:nth-child(even) { background: rgba(26,107,107,0.04); }
+    .responsive-table tbody td {
+      padding: 13px 18px; font-size: 0.85rem;
+      border-bottom: 1px solid #e8edf2; color: var(--slate);
+    }
+    .responsive-table tbody td:first-child { font-weight: 600; color: var(--navy); }
+    .check { color: var(--lime); font-weight: 700; }
+    .cross { color: #aaa; }
+
+    /* ─── COMPETITIVE REALITY ────────────────────────────────── */
+    .competitive { background: var(--white); }
+    .evidence-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; margin-top: 40px; }
+    .evidence-card {
+      background: var(--body-bg); border-radius: 12px;
+      padding: 28px 30px; border-left: 4px solid var(--accent);
+    }
+    .evidence-card h4 { font-size: 0.95rem; font-weight: 700; margin-bottom: 8px; }
+    .evidence-card p { font-size: 0.875rem; color: var(--slate); line-height: 1.6; }
+    .evidence-card .highlight { color: var(--teal); font-weight: 700; }
+
+    .swing-box {
+      background: linear-gradient(135deg, var(--navy), #0e3a52);
+      color: white; border-radius: 14px; padding: 40px;
+      margin-top: 40px; text-align: center;
+    }
+    .swing-box .big-num {
+      font-size: 4rem; font-weight: 800; color: var(--accent); line-height: 1;
+    }
+    .swing-box p { color: rgba(255,255,255,0.8); font-size: 1rem; margin-top: 12px; max-width: 480px; margin-left: auto; margin-right: auto; }
+
+    /* ─── HOW WE HELP ────────────────────────────────────────── */
+    .how-we-help { background: var(--teal-lt); }
+    .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 48px; }
+    .service-card {
+      background: white; border-radius: 14px;
+      padding: 32px 28px; box-shadow: var(--card-shadow);
+    }
+    .service-icon {
+      width: 52px; height: 52px; border-radius: 12px;
+      background: var(--teal-lt); color: var(--teal);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.4rem; margin-bottom: 18px;
+    }
+    .service-card h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 10px; }
+    .service-card p { font-size: 0.875rem; color: var(--slate); line-height: 1.6; }
+    .service-card ul {
+      list-style: none; margin-top: 14px;
+      display: flex; flex-direction: column; gap: 7px;
+    }
+    .service-card ul li {
+      font-size: 0.82rem; color: var(--slate);
+      display: flex; gap: 8px;
+    }
+    .service-card ul li::before { content: '✓'; color: var(--lime); font-weight: 700; }
+
+    /* ─── ROADMAP ─────────────────────────────────────────────── */
+    .roadmap-section { background: var(--white); }
+    .roadmap-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 48px; }
+    .roadmap-phase {
+      background: var(--body-bg); border-radius: 14px; padding: 36px;
+      position: relative; overflow: hidden;
+    }
+    .roadmap-phase::before {
+      content: '';
+      position: absolute; top: 0; left: 0;
+      width: 5px; height: 100%;
+    }
+    .roadmap-phase.p1::before { background: var(--lime); }
+    .roadmap-phase.p2::before { background: var(--teal-mid); }
+    .phase-timeline {
+      font-size: 0.78rem; font-weight: 700; letter-spacing: 0.08em;
+      text-transform: uppercase; color: var(--teal-mid); margin-bottom: 6px;
+    }
+    .roadmap-phase h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 6px; }
+    .phase-cost {
+      display: inline-block; font-size: 0.8rem; font-weight: 600;
+      background: rgba(43,191,191,0.12); color: var(--teal);
+      padding: 3px 12px; border-radius: 20px; margin-bottom: 18px;
+    }
+    .roadmap-phase ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .roadmap-phase ul li {
+      font-size: 0.875rem; color: var(--slate);
+      display: flex; gap: 10px; align-items: flex-start;
+    }
+    .roadmap-phase ul li strong { color: var(--navy); }
+    .roadmap-phase ul li::before { content: '→'; color: var(--accent); font-weight: 700; flex-shrink: 0; }
+
+    /* ─── TESTIMONIAL ────────────────────────────────────────── */
+    .testimonial-section {
+      background: linear-gradient(135deg, var(--navy) 0%, #0e3a52 100%);
+      padding: 80px 5%;
+    }
+    .testimonial-inner {
+      max-width: 860px; margin: 0 auto; text-align: center;
+    }
+    .testimonial-inner blockquote {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.2rem, 2.5vw, 1.55rem);
+      color: white; line-height: 1.55; font-style: italic;
+      margin-bottom: 28px;
+    }
+    .testimonial-inner blockquote::before { content: '\201C'; color: var(--accent); }
+    .testimonial-inner blockquote::after  { content: '\201D'; color: var(--accent); }
+    .testimonial-attr { color: rgba(255,255,255,0.65); font-size: 0.9rem; }
+    .testimonial-attr strong { color: white; font-weight: 600; }
+
+    /* ─── CTA SECTION ────────────────────────────────────────── */
+    .cta-section { background: var(--body-bg); text-align: center; padding: 96px 5%; }
+    .cta-section .section-title { margin-bottom: 14px; }
+    .cta-section p { color: var(--slate); font-size: 1.05rem; max-width: 560px; margin: 0 auto 38px; }
+    .cta-btn-group { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+    .btn-lg {
+      padding: 16px 40px; border-radius: 8px;
+      font-weight: 700; font-size: 1rem;
+      text-decoration: none; display: inline-block;
+      transition: transform 0.15s, opacity 0.15s;
+    }
+    .btn-lg:hover { transform: translateY(-2px); opacity: 0.90; }
+    .btn-teal { background: var(--teal); color: white; }
+    .btn-navy-outline {
+      background: transparent; border: 2px solid var(--navy);
+      color: var(--navy);
+    }
+
+    /* ─── FOOTER ─────────────────────────────────────────────── */
+    footer {
+      background: var(--navy); color: rgba(255,255,255,0.55);
+      padding: 44px 5%; display: flex;
+      justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: 16px;
+    }
+    footer .f-logo { font-size: 1.2rem; font-weight: 700; color: white; }
+    footer .f-logo span { color: var(--accent); }
+    footer nav a {
+      color: rgba(255,255,255,0.55); font-size: 0.85rem;
+      text-decoration: none; margin-left: 24px;
+    }
+    footer nav a:hover { color: var(--accent); }
+    footer p { font-size: 0.8rem; }
+
+    /* ─── RESPONSIVE ─────────────────────────────────────────── */
+    @media (max-width: 900px) {
+      .stats-grid, .levels-grid { grid-template-columns: repeat(2, 1fr); }
+      .two-col, .evidence-grid, .roadmap-grid { grid-template-columns: 1fr; }
+      .services-grid { grid-template-columns: 1fr 1fr; }
+      .deadline-inner { grid-template-columns: 1fr; }
+      .deadline-card { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.1); }
+      .nav-links { display: none; }
+    }
+    @media (max-width: 600px) {
+      .stats-grid, .levels-grid, .services-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ───── NAV ───── -->
+<nav>
+  <a href="#" class="nav-logo">sustain<span>zone</span></a>
+  <ul class="nav-links">
+    <li><a href="#what-is">What Is Evergreen</a></li>
+    <li><a href="#levels">The 4 Levels</a></li>
+    <li><a href="#competitive">Competitive Reality</a></li>
+    <li><a href="#how-we-help">How We Help</a></li>
+  </ul>
+  <a href="#cta" class="nav-cta">Free Gap Analysis</a>
+</nav>
+
+<!-- ───── TICKER ───── -->
+<div class="ticker">
+  <span class="ticker-label">⚠ URGENT</span>
+  <div class="ticker-items">
+    <span>🔴 <strong>April 2026:</strong> Evergreen Level 1 mandatory for ALL NHS Supply Chain frameworks</span>
+    <span>⚡ <strong>Level 1 alone is no longer competitive</strong> — live tenders already require Level 2 &amp; 3</span>
+    <span>📅 <strong>April 2027:</strong> All suppliers must publish global Scope 1, 2 &amp; 3 CRPs</span>
+    <span>🏆 Social value scoring = <strong>10–30% of tender weighting</strong> — higher Evergreen levels win more</span>
+    <span>🔴 <strong>April 2026:</strong> Evergreen Level 1 mandatory for ALL NHS Supply Chain frameworks</span>
+    <span>⚡ <strong>Level 1 alone is no longer competitive</strong> — live tenders already require Level 2 &amp; 3</span>
+    <span>📅 <strong>April 2027:</strong> All suppliers must publish global Scope 1, 2 &amp; 3 CRPs</span>
+    <span>🏆 Social value scoring = <strong>10–30% of tender weighting</strong> — higher Evergreen levels win more</span>
+  </div>
+</div>
+
+<!-- ───── HERO ───── -->
+<section class="hero">
+  <div class="hero-badge">NHS Supply Chain · Evergreen Assessment Specialists</div>
+  <h1>Don't Just Comply.<br/><em>Win.</em></h1>
+  <p>The NHS Evergreen Assessment is now mandatory — but Level 1 is just the entry ticket. SustainZone helps NHS suppliers progress beyond compliance to gain a genuine competitive edge in procurement.</p>
+  <div class="hero-btns">
+    <a href="#cta" class="btn-primary">Request a Free Evergreen Gap Analysis</a>
+    <a href="#levels" class="btn-outline">Understand the 4 Levels →</a>
+  </div>
+</section>
+
+<!-- ───── STATS ───── -->
+<div class="stats-section">
+  <div class="stats-grid">
+    <div class="stat-card">
+      <div class="stat-number">71%</div>
+      <div class="stat-label">of NHS carbon footprint comes from its supply chain</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">£8bn</div>
+      <div class="stat-label">in annual NHS procurement spend covered by Evergreen</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">30%</div>
+      <div class="stat-label">of tender score can be driven by social value &amp; sustainability</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">2026</div>
+      <div class="stat-label">the year Level 1 becomes the minimum gate — not the goal</div>
+    </div>
+  </div>
+</div>
+
+<!-- ───── WHAT IS EVERGREEN ───── -->
+<section class="what-is" id="what-is">
+  <div class="container">
+    <div class="two-col">
+      <div>
+        <span class="section-label">The Framework</span>
+        <h2 class="section-title">What Is the NHS Evergreen Assessment?</h2>
+        <div class="divider"></div>
+        <p class="section-sub">Launched in June 2023 by NHS England's Central Commercial Function and Greener NHS teams, the Evergreen Sustainable Supplier Assessment is the NHS's standardised route for suppliers to demonstrate their sustainability maturity — described as "one conversation with the NHS."</p>
+        <ul class="feature-list">
+          <li>
+            <div class="feat-icon">🌐</div>
+            <div>
+              <div class="feat-title">Single Standardised Platform</div>
+              <div class="feat-desc">Hosted on Atamis (Health Family e-commerce system). Replaces fragmented, ad-hoc sustainability questions from different NHS organisations.</div>
+            </div>
+          </li>
+          <li>
+            <div class="feat-icon">📊</div>
+            <div>
+              <div class="feat-title">18-Section Self-Assessment</div>
+              <div class="feat-desc">Covers emissions targets, verification, renewable energy, electric vehicles, circular economy, UN SDGs, modern slavery, and transparency reporting.</div>
+            </div>
+          </li>
+          <li>
+            <div class="feat-icon">📋</div>
+            <div>
+              <div class="feat-title">Legal Foundation</div>
+              <div class="feat-desc">Underpinned by the Health and Care Act 2022 and builds upon CRP requirements (PPN 006), Social Value Model (PPN 002), and the Modern Slavery Assessment Tool (MSAT).</div>
+            </div>
+          </li>
+          <li>
+            <div class="feat-icon">⏱</div>
+            <div>
+              <div class="feat-title">12-Month Maturity Score</div>
+              <div class="feat-desc">Suppliers receive a score valid for 12 months. Annual KPI monitoring means progression — or stagnation — is visible to every NHS procurement body.</div>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="info-panel">
+        <h3>The NHS Net Zero Commitment</h3>
+        <div class="info-row"><div class="info-dot"></div><div>In October 2020, the NHS became the <strong style="color:white">world's first national health system</strong> to commit to net zero.</div></div>
+        <div class="info-row"><div class="info-dot"></div><div><strong style="color:white">Net zero by 2040</strong> for direct emissions (Scope 1 &amp; 2 — NHS Carbon Footprint).</div></div>
+        <div class="info-row"><div class="info-dot"></div><div><strong style="color:white">Net zero by 2045</strong> for the full supply chain (Scope 3 — NHS Carbon Footprint Plus).</div></div>
+        <div class="info-row"><div class="info-dot"></div><div>The NHS supply chain accounts for <strong style="color:white">over 60% of total NHS carbon emissions</strong>. Every supplier is part of the solution.</div></div>
+        <div class="info-row"><div class="info-dot"></div><div>Over <strong style="color:white">2,000 suppliers</strong> have already registered. The NHS is supplied by over 80,000 companies. The race to differentiate has already begun.</div></div>
+        <div style="margin-top:28px; padding-top:24px; border-top:1px solid rgba(255,255,255,0.12);">
+          <div style="font-size:0.78rem;color:rgba(255,255,255,0.5);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:10px;">Regulatory Basis</div>
+          <div style="font-size:0.82rem;color:rgba(255,255,255,0.65);line-height:1.6;">Health &amp; Care Act 2022 · PPN 006 · PPN 002 · Climate Change Act 2008 · Environment Act 2021</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ───── DEADLINES ───── -->
+<div class="deadline-banner">
+  <div class="deadline-inner">
+    <div class="deadline-card">
+      <div class="deadline-date">📅 April 2026 — NOW</div>
+      <div class="deadline-title">Level 1 Becomes the Minimum Gate</div>
+      <div class="deadline-desc">All NHS Supply Chain frameworks require Evergreen Level 1 as a minimum standard to continue doing business. The Patient Temperature Management 2027 framework (£150m) already enforces this.</div>
+    </div>
+    <div class="deadline-card">
+      <div class="deadline-date">📅 April 2027</div>
+      <div class="deadline-title">Global Scope 3 CRPs Required</div>
+      <div class="deadline-desc">All suppliers must publish Carbon Reduction Plans covering global Scope 1, 2 and all Scope 3 emissions — effectively demanding Level 2+ capability. Suppliers at Level 1 face a critical 12-month window to bridge the gap.</div>
+    </div>
+    <div class="deadline-card">
+      <div class="deadline-date">📅 2030</div>
+      <div class="deadline-title">Evergreen Progress = Hard Qualification</div>
+      <div class="deadline-desc">From 2030, suppliers will only qualify for NHS contracts by demonstrating Evergreen progress. Level 1 alone will not be sufficient to bid. Product-level carbon footprinting requirements follow from April 2028.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ───── LEVELS ───── -->
+<section class="levels-section" id="levels">
+  <div class="container">
+    <span class="section-label">Maturity Framework</span>
+    <h2 class="section-title">The Four Evergreen Levels — Explained</h2>
+    <div class="divider"></div>
+    <p class="section-sub">The framework is cumulative — each level builds on all requirements of the level below. Level 1 is now merely table stakes. Levels 2 and 3 are where competitive differentiation is won.</p>
+
+    <div class="levels-grid">
+
+      <div class="level-card">
+        <div class="level-header l1">
+          <div class="level-num">1</div>
+          <div class="level-name">Publicly Committed</div>
+          <span class="level-tag">Table Stakes</span>
+        </div>
+        <div class="level-body">
+          <ul class="level-rows">
+            <li>Scope 1, 2 &amp; partial Scope 3 (5 PPN 006 categories)</li>
+            <li>UK operations only</li>
+            <li>Net zero target by 2050 or sooner</li>
+            <li>Self-reported — no independent validation required</li>
+            <li>Legislative modern slavery compliance only</li>
+          </ul>
+          <div class="level-mandatory yes">✓ Mandatory from April 2026</div>
+        </div>
+      </div>
+
+      <div class="level-card">
+        <div class="level-header l2">
+          <div class="level-num">2</div>
+          <div class="level-name">Comprehensive Targets</div>
+          <span class="level-tag">Competitive Edge</span>
+        </div>
+        <div class="level-body">
+          <ul class="level-rows">
+            <li>All 15 GHG Protocol Scope 3 categories (UK)</li>
+            <li>Modern slavery public statement required</li>
+            <li>Corporate social value programme required</li>
+            <li>Community, diversity &amp; health/wellbeing programmes</li>
+            <li>Net zero by 2050 or sooner</li>
+          </ul>
+          <div class="level-mandatory no">⚡ Already demanded in live tenders</div>
+        </div>
+      </div>
+
+      <div class="level-card">
+        <div class="level-header l3">
+          <div class="level-num">3</div>
+          <div class="level-name">NHS-Aligned Targets</div>
+          <span class="level-tag">Strong Differentiator</span>
+        </div>
+        <div class="level-body">
+          <ul class="level-rows">
+            <li>Global operations — all Scope 3</li>
+            <li>Net zero by 2045 (NHS-aligned Carbon Footprint Plus)</li>
+            <li>Independent validation (e.g. SBTi)</li>
+            <li>Full MSAT completion — structured risk assessment</li>
+            <li>Board-level sustainability governance</li>
+          </ul>
+          <div class="level-mandatory no">⭐ Premium procurement positioning</div>
+        </div>
+      </div>
+
+      <div class="level-card">
+        <div class="level-header l4">
+          <div class="level-num">4</div>
+          <div class="level-name">Leadership Tier</div>
+          <span class="level-tag">Market Leader</span>
+        </div>
+        <div class="level-body">
+          <ul class="level-rows">
+            <li>Entity + parent company — all scopes globally</li>
+            <li>Recognised high performer (CDP, EcoVadis, or B Corp)</li>
+            <li>Active supply chain mapping &amp; incident investigation</li>
+            <li>2045 NHS-aligned net zero, independently validated</li>
+          </ul>
+          <div class="level-mandatory no">🏆 Example: Sodexo — Reuters Sustainability Award winner</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ───── COMPARISON TABLE ───── -->
+<section class="table-section">
+  <div class="container">
+    <span class="section-label">Requirements Breakdown</span>
+    <h2 class="section-title">What Each Level Requires</h2>
+    <div class="divider"></div>
+    <table class="responsive-table">
+      <thead>
+        <tr>
+          <th>Requirement</th>
+          <th>Level 1</th>
+          <th>Level 2</th>
+          <th>Level 3</th>
+          <th>Level 4</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Emissions Scope</td>
+          <td>Scope 1, 2, partial Scope 3 (5 categories)</td>
+          <td>Scope 1, 2, all relevant Scope 3</td>
+          <td>Scope 1, 2, all Scope 3</td>
+          <td>Entity + parent, all scopes</td>
+        </tr>
+        <tr>
+          <td>Geographic Boundary</td>
+          <td>UK only</td>
+          <td>UK only</td>
+          <td>Global</td>
+          <td>Global (entity + parent)</td>
+        </tr>
+        <tr>
+          <td>Net Zero Target</td>
+          <td>2050 or sooner</td>
+          <td>2050 or sooner</td>
+          <td>2045 (NHS aligned)</td>
+          <td>2045 (NHS aligned)</td>
+        </tr>
+        <tr>
+          <td>Independent Validation</td>
+          <td class="cross">✗ Not required</td>
+          <td class="cross">✗ Not required</td>
+          <td class="check">✓ Required (e.g. SBTi)</td>
+          <td class="check">✓ Required (entity + parent)</td>
+        </tr>
+        <tr>
+          <td>Modern Slavery</td>
+          <td>Legislative requirement only</td>
+          <td>Public statement required</td>
+          <td>Full MSAT completion</td>
+          <td>Active supply chain mapping</td>
+        </tr>
+        <tr>
+          <td>Social Value Programme</td>
+          <td class="cross">✗ Not required</td>
+          <td class="check">✓ Required</td>
+          <td class="check">✓ Required</td>
+          <td class="check">✓ Required</td>
+        </tr>
+        <tr>
+          <td>3rd Party Reporting (CDP/EcoVadis)</td>
+          <td class="cross">✗ Not required</td>
+          <td class="cross">✗ Not required</td>
+          <td class="cross">✗ Not required</td>
+          <td class="check">✓ Recognised high performer</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ───── COMPETITIVE REALITY ───── -->
+<section class="competitive" id="competitive">
+  <div class="container">
+    <span class="section-label">Market Reality</span>
+    <h2 class="section-title">Level 1 Is Already Non-Competitive</h2>
+    <div class="divider"></div>
+    <p class="section-sub">The claim that suppliers can wait until April 2026 to engage with Evergreen is outdated. NHS procurement bodies are embedding Evergreen levels into live tenders right now — and the bar is rising fast.</p>
+
+    <div class="evidence-grid">
+      <div class="evidence-card">
+        <h4>Patient Temperature Management 2027 (£150m)</h4>
+        <p>Published January 2026, this framework <span class="highlight">explicitly requires Evergreen Level 1 as a minimum</span>. The tender notice was amended because the close date falls after 1 April 2026.</p>
+      </div>
+      <div class="evidence-card">
+        <h4>NHS England Medicines Tenders</h4>
+        <p>A valid Evergreen submission has been a <span class="highlight">pass/fail condition of award since January 2024</span>. NHS England explicitly encourages bidders to achieve the highest level possible — with annual KPI monitoring.</p>
+      </div>
+      <div class="evidence-card">
+        <h4>All NHS Supply Chain Frameworks</h4>
+        <p>Evergreen completion has been <span class="highlight">required since February 2024</span> for all new and existing frameworks. Office Supplies 2026 pre-market engagement confirms Evergreen submission required for all bidders.</p>
+      </div>
+      <div class="evidence-card">
+        <h4>Social Value: 10–30% of Tender Score</h4>
+        <p>Since April 2022, all NHS procurements include a <span class="highlight">minimum 10% net zero and social value weighting</span>. ~80% of NOE CPC framework agreements apply at least this minimum.</p>
+      </div>
+    </div>
+
+    <div class="swing-box">
+      <div class="big-num">2–6%</div>
+      <p>The difference between a Level 1 and Level 2/3 response in social value sections can represent a <strong>2–6 percentage point swing in overall tender scores</strong> — frequently the margin between winning and losing.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ───── HOW WE HELP ───── -->
+<section class="how-we-help" id="how-we-help">
+  <div class="container">
+    <span class="section-label">SustainZone Services</span>
+    <h2 class="section-title">How SustainZone Supports Your Evergreen Journey</h2>
+    <div class="divider"></div>
+    <p class="section-sub">We work from your side of the desk. Our approach is genuine co-creation — from gap analysis through to validated submission — so you build lasting capability, not just a one-time compliance tick.</p>
+
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon">🔍</div>
+        <h3>Evergreen Gap Analysis</h3>
+        <p>We assess your current position against all four Evergreen levels, identifying exactly where you are, where the gaps lie, and what's needed to reach your target level.</p>
+        <ul>
+          <li>Current level assessment</li>
+          <li>Gap-by-gap action plan</li>
+          <li>Prioritised quick wins</li>
+          <li>Written report &amp; debrief</li>
+        </ul>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">📝</div>
+        <h3>Compliant Evergreen Submissions</h3>
+        <p>We build fully compliant Evergreen submissions on the Atamis platform — structured to strengthen your tender readiness and remove the stress, confusion and delays that hold suppliers back.</p>
+        <ul>
+          <li>Carbon Reduction Plan drafting</li>
+          <li>Modern slavery documentation</li>
+          <li>Social value programme design</li>
+          <li>Atamis platform submission support</li>
+        </ul>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🗺</div>
+        <h3>Evergreen Assessment Roadmap</h3>
+        <p>For suppliers targeting Level 2 or 3, we build a tailored multi-year roadmap with phased milestones, cost estimates, and accountability structures to ensure you stay on track.</p>
+        <ul>
+          <li>Scope 3 carbon footprinting</li>
+          <li>SBTi validation pathway</li>
+          <li>Global boundary expansion</li>
+          <li>Board-level governance design</li>
+        </ul>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">📊</div>
+        <h3>Carbon Reporting &amp; Strategy</h3>
+        <p>From baseline carbon footprints (Scope 1, 2 &amp; 3) to Net Zero strategies with credible reduction pathways aligned to NHS timelines and the Science Based Targets initiative.</p>
+        <ul>
+          <li>GHG Protocol-aligned inventories</li>
+          <li>Spend-based Scope 3 screening</li>
+          <li>SBTi target-setting support</li>
+          <li>Annual reporting management</li>
+        </ul>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">⚖</div>
+        <h3>ISO 14001 &amp; EMS Support</h3>
+        <p>Environmental Management System certification provides the governance infrastructure for carbon measurement and target-setting that underpins Level 2 and 3 compliance.</p>
+        <ul>
+          <li>ISO 14001 gap analysis</li>
+          <li>Environmental policy development</li>
+          <li>Certification readiness support</li>
+          <li>ISO 50001 energy management</li>
+        </ul>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🤝</div>
+        <h3>Fractional CSO Support</h3>
+        <p>For organisations that need sustained sustainability leadership without a full-time hire, our fractional Chief Sustainability Officer service provides expertise on demand.</p>
+        <ul>
+          <li>Board-level sustainability governance</li>
+          <li>Horizon scanning &amp; regulatory monitoring</li>
+          <li>Stakeholder &amp; tender response support</li>
+          <li>Knowledge transfer &amp; capability building</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ───── ROADMAP ───── -->
+<section class="roadmap-section">
+  <div class="container">
+    <span class="section-label">Practical Steps</span>
+    <h2 class="section-title">From Level 1 to Level 3: What It Takes</h2>
+    <div class="divider"></div>
+    <p class="section-sub">Based on our experience supporting NHS suppliers, here is a realistic, costed view of what progression looks like — so you can plan with confidence.</p>
+
+    <div class="roadmap-grid">
+      <div class="roadmap-phase p1">
+        <div class="phase-timeline">Estimated 6–12 months</div>
+        <h3>Level 1 → Level 2</h3>
+        <span class="phase-cost">Estimated cost: £10,000–£50,000</span>
+        <ul>
+          <li><strong>Full Scope 3 Carbon Footprint</strong> — Screen all 15 GHG Protocol categories (not just the 5 required at Level 1). Estimated: £5,000–£25,000.</li>
+          <li><strong>Corporate Social Value Programme</strong> — Community engagement, diversity &amp; inclusion, volunteering, health/wellbeing aligned to PPN 002's Five Missions.</li>
+          <li><strong>Modern Slavery Statement</strong> — Required at Level 2 even if below the £36m legislative threshold. Plus due diligence processes for supply chain risk.</li>
+          <li><strong>Environmental Management System</strong> — ISO 14001 provides systematic infrastructure. Certification: ~£3,000–£10,000 in Year 1.</li>
+          <li><strong>Supply Chain Engagement</strong> — Begin engaging Tier 1 suppliers on their own carbon reporting and sustainability expectations.</li>
+        </ul>
+      </div>
+      <div class="roadmap-phase p2">
+        <div class="phase-timeline">Estimated 12–24 months additional</div>
+        <h3>Level 2 → Level 3</h3>
+        <span class="phase-cost">Estimated cost: £30,000–£130,000+</span>
+        <ul>
+          <li><strong>Science-Based Targets (SBTi)</strong> — Commit, develop, and validate targets (near-term ~40 business days, net-zero ~60 days). SBTi costs: £1,980 (SMEs) to £16,731+.</li>
+          <li><strong>Global Emissions Boundary</strong> — Expand from UK-only to all global facilities, operations, and subsidiaries. Cost: £5,000–£30,000.</li>
+          <li><strong>2045 Net Zero Target</strong> — Accelerate commitment to align with NHS Carbon Footprint Plus timeline, supported by a credible SBTi-validated reduction pathway.</li>
+          <li><strong>Third-Party Verification</strong> — Independent emissions verification by SGS, Bureau Veritas, LRQA, or BSI. Cost: ~£5,000–£20,000.</li>
+          <li><strong>Board-Level Governance</strong> — Appoint sustainability lead, integrate sustainability KPIs into executive performance frameworks, TCFD/UK SRS alignment.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ───── TESTIMONIAL ───── -->
+<div class="testimonial-section">
+  <div class="testimonial-inner">
+    <blockquote>
+      SustainZone made the NHS Evergreen process so much clearer for us. They quickly identified the gaps in our approach and helped us build a structure that felt achievable and aligned with NHS expectations. Their guidance was practical, collaborative and grounded in what suppliers actually need to demonstrate. Thanks to their support, we now have a confident, credible sustainability position that strengthens our place in the NHS supply chain.
+    </blockquote>
+    <div class="testimonial-attr"><strong>PHL Group</strong> — NHS Supply Chain Supplier</div>
+  </div>
+</div>
+
+<!-- ───── CTA ───── -->
+<section class="cta-section" id="cta">
+  <div class="container">
+    <span class="section-label">Get Started</span>
+    <h2 class="section-title">Your Path Starts with a Free Gap Analysis</h2>
+    <div class="divider" style="margin: 18px auto 28px;"></div>
+    <p>Tell us where you are today. We'll assess your current Evergreen level, map the gaps, and show you exactly what Level 2 or Level 3 would take — with no obligation.</p>
+    <div class="cta-btn-group">
+      <a href="mailto:hello@sustainzone.co.uk?subject=Free Evergreen Gap Analysis Request" class="btn-lg btn-teal">Request My Free Gap Analysis</a>
+      <a href="#what-is" class="btn-lg btn-navy-outline">Learn More About Evergreen</a>
+    </div>
+    <p style="margin-top:28px; font-size:0.82rem; color:#aaa;">No commitment required. Results delivered within 5 working days. · <a href="https://www.sustainzone.co.uk" style="color:var(--teal-mid);">www.sustainzone.co.uk</a></p>
+  </div>
+</section>
+
+<!-- ───── FOOTER ───── -->
+<footer>
+  <div class="f-logo">sustain<span>zone</span></div>
+  <p>© 2026 SustainZone Limited · Registered in England &amp; Wales</p>
+  <nav>
+    <a href="#">Strategy</a>
+    <a href="#">Reporting</a>
+    <a href="#">Climate Risk</a>
+    <a href="#">Contact</a>
+  </nav>
+</footer>
+
+</body>
+</html>
