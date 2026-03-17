@@ -64,7 +64,10 @@
 
     /* ─── HERO ────────────────────────────────────────────────── */
     .hero {
-      background: linear-gradient(135deg, var(--navy) 0%, #0e3a52 55%, var(--teal) 100%);
+      background: linear-gradient(rgba(13,33,55,0.85), rgba(14,58,82,0.85)), 
+    url('https://images.pexels.com/photos/263402/pexels-photo-263402.jpeg');
+      background-size: cover;
+      background-position: center;
       color: var(--white);
       padding: 100px 5% 90px;
       text-align: center;
@@ -449,13 +452,19 @@
     @media (max-width: 600px) {
       .stats-grid, .levels-grid, .services-grid { grid-template-columns: 1fr; }
     }
+    .logo img {
+    height: 30px;
+    width: auto;
+   }
   </style>
 </head>
 <body>
 
 <!-- ───── NAV ───── -->
 <nav>
-  <a href="#" class="nav-logo">sustain<span>zone</span></a>
+ <div class="logo">
+  <img src="./Logo_White.png" alt="SustainZone Logo">
+ </div>
   <ul class="nav-links">
     <li><a href="#what-is">What Is Evergreen</a></li>
     <li><a href="#levels">The 4 Levels</a></li>
@@ -483,11 +492,11 @@
 <!-- ───── HERO ───── -->
 <section class="hero">
   <div class="hero-badge">NHS Supply Chain · Evergreen Assessment Specialists</div>
-  <h1>Don't Just Comply.<br/><em>Win.</em></h1>
-  <p>The NHS Evergreen Assessment is now mandatory — but Level 1 is just the entry ticket. SustainZone helps NHS suppliers progress beyond compliance to gain a genuine competitive edge in procurement.</p>
+  <h1>Are you compliant to supply the NHS?</h1>
+  <p>From April 2026, Evergreen Level 1 is mandatory for all NHS suppliers. If you haven’t completed your assessment, you cannot bid. SustainZone helps you become compliant — and competitive.</p>
   <div class="hero-btns">
-    <a href="#cta" class="btn-primary">Request a Free Evergreen Gap Analysis</a>
-    <a href="#levels" class="btn-outline">Understand the 4 Levels →</a>
+    <a href="#cta" class="btn-primary">Request a Free Consultation</a>
+    <a href="#levels" class="btn-outline">Understand Evergreen →</a>
   </div>
 </section>
 
@@ -514,7 +523,7 @@
 </div>
 
 <!-- ───── WHAT IS EVERGREEN ───── -->
-<section class="what-is" id="what-is">
+<section class="what-is" id="what-is"><div class="container"><h2 style="text-align:center;margin-bottom:40px;">If you don’t meet the Evergreen standard, you cannot supply to the NHS</h2></div>
   <div class="container">
     <div class="two-col">
       <div>
@@ -522,36 +531,8 @@
         <h2 class="section-title">What Is the NHS Evergreen Assessment?</h2>
         <div class="divider"></div>
         <p class="section-sub">Launched in June 2023 by NHS England's Central Commercial Function and Greener NHS teams, the Evergreen Sustainable Supplier Assessment is the NHS's standardised route for suppliers to demonstrate their sustainability maturity — described as "one conversation with the NHS."</p>
-        <ul class="feature-list">
-          <li>
-            <div class="feat-icon">🌐</div>
-            <div>
-              <div class="feat-title">Single Standardised Platform</div>
-              <div class="feat-desc">Hosted on Atamis (Health Family e-commerce system). Replaces fragmented, ad-hoc sustainability questions from different NHS organisations.</div>
-            </div>
-          </li>
-          <li>
-            <div class="feat-icon">📊</div>
-            <div>
-              <div class="feat-title">18-Section Self-Assessment</div>
-              <div class="feat-desc">Covers emissions targets, verification, renewable energy, electric vehicles, circular economy, UN SDGs, modern slavery, and transparency reporting.</div>
-            </div>
-          </li>
-          <li>
-            <div class="feat-icon">📋</div>
-            <div>
-              <div class="feat-title">Legal Foundation</div>
-              <div class="feat-desc">Underpinned by the Health and Care Act 2022 and builds upon CRP requirements (PPN 006), Social Value Model (PPN 002), and the Modern Slavery Assessment Tool (MSAT).</div>
-            </div>
-          </li>
-          <li>
-            <div class="feat-icon">⏱</div>
-            <div>
-              <div class="feat-title">12-Month Maturity Score</div>
-              <div class="feat-desc">Suppliers receive a score valid for 12 months. Annual KPI monitoring means progression — or stagnation — is visible to every NHS procurement body.</div>
-            </div>
-          </li>
-        </ul>
+        <img src="https://images.pexels.com/photos/305568/pexels-photo-305568.jpeg" 
+    style="width:100%; border-radius:12px; margin-top:20px;" />
       </div>
       <div class="info-panel">
         <h3>The NHS Net Zero Commitment</h3>
@@ -773,9 +754,9 @@
       </div>
     </div>
 
-    <div class="swing-box">
+    <div class="swing-box"><h3>Increase your chances of winning</h3>
       <div class="big-num">2–6%</div>
-      <p>The difference between a Level 1 and Level 2/3 response in social value sections can represent a <strong>2–6 percentage point swing in overall tender scores</strong> — frequently the margin between winning and losing.</p>
+      <p>Suppliers at Level 2 or 3 can gain a 2–6% scoring advantage in tenders — often the difference between winning and losing.</p>
     </div>
   </div>
 </section>
@@ -863,7 +844,7 @@
 <section class="roadmap-section">
   <div class="container">
     <span class="section-label">Practical Steps</span>
-    <h2 class="section-title">From Level 1 to Level 3: What It Takes</h2>
+    <h2 class="section-title">The Race to Level 2 Has Already Begun</h2>
     <div class="divider"></div>
     <p class="section-sub">Based on our experience supporting NHS suppliers, here is a realistic, costed view of what progression looks like — so you can plan with confidence.</p>
 
@@ -871,7 +852,7 @@
       <div class="roadmap-phase p1">
         <div class="phase-timeline">Estimated 6–12 months</div>
         <h3>Level 1 → Level 2</h3>
-        <span class="phase-cost">Estimated cost: £10,000–£50,000</span>
+        <span class="phase-cost">Typical industry cost: £10,000–£50,000</span>
         <ul>
           <li><strong>Full Scope 3 Carbon Footprint</strong> — Screen all 15 GHG Protocol categories (not just the 5 required at Level 1). Estimated: £5,000–£25,000.</li>
           <li><strong>Corporate Social Value Programme</strong> — Community engagement, diversity &amp; inclusion, volunteering, health/wellbeing aligned to PPN 002's Five Missions.</li>
@@ -883,7 +864,7 @@
       <div class="roadmap-phase p2">
         <div class="phase-timeline">Estimated 12–24 months additional</div>
         <h3>Level 2 → Level 3</h3>
-        <span class="phase-cost">Estimated cost: £30,000–£130,000+</span>
+        <span class="phase-cost">Typical industry cost: £30,000–£130,000+</span>
         <ul>
           <li><strong>Science-Based Targets (SBTi)</strong> — Commit, develop, and validate targets (near-term ~40 business days, net-zero ~60 days). SBTi costs: £1,980 (SMEs) to £16,731+.</li>
           <li><strong>Global Emissions Boundary</strong> — Expand from UK-only to all global facilities, operations, and subsidiaries. Cost: £5,000–£30,000.</li>
@@ -910,12 +891,12 @@
 <section class="cta-section" id="cta">
   <div class="container">
     <span class="section-label">Get Started</span>
-    <h2 class="section-title">Your Path Starts with a Free Gap Analysis</h2>
+    <h2 class="section-title">Start with a Free Consultation</h2>
     <div class="divider" style="margin: 18px auto 28px;"></div>
     <p>Tell us where you are today. We'll assess your current Evergreen level, map the gaps, and show you exactly what Level 2 or Level 3 would take — with no obligation.</p>
     <div class="cta-btn-group">
       <a href="mailto:hello@sustainzone.co.uk?subject=Free Evergreen Gap Analysis Request" class="btn-lg btn-teal">Request My Free Gap Analysis</a>
-      <a href="#what-is" class="btn-lg btn-navy-outline">Learn More About Evergreen</a>
+      <a href="#what-is" class="btn-lg btn-navy-outline">Request My Free Gap Analysis</a>
     </div>
     <p style="margin-top:28px; font-size:0.82rem; color:#aaa;">No commitment required. Results delivered within 5 working days. · <a href="https://www.sustainzone.co.uk" style="color:var(--teal-mid);">www.sustainzone.co.uk</a></p>
   </div>
@@ -923,7 +904,9 @@
 
 <!-- ───── FOOTER ───── -->
 <footer>
-  <div class="f-logo">sustain<span>zone</span></div>
+   <div class="logo">
+    <img src="./Logo_White.png" alt="SustainZone Logo">
+   </div>
   <p>© 2026 SustainZone Limited · Registered in England &amp; Wales</p>
   <nav>
     <a href="#">Strategy</a>
