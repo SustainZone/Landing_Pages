@@ -1,50 +1,302 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Sustainability Platform</title>
-  <link rel="stylesheet" href="style.css">
-</head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SustainGate | Sustainability Solutions</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
 
+    body {
+      background: #f4f8f7;
+      color: #1f2937;
+      line-height: 1.6;
+    }
+
+    header {
+      background: linear-gradient(135deg, #0f766e, #16a34a);
+      color: white;
+      text-align: center;
+      padding: 40px 20px;
+    }
+
+    header img {
+      max-width: 120px;
+      margin-bottom: 15px;
+    }
+
+    header h1 {
+      font-size: 2.2rem;
+      margin-bottom: 10px;
+    }
+
+    header p {
+      font-size: 1.05rem;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 40px auto;
+    }
+
+    .section-title {
+      font-size: 1.8rem;
+      margin-bottom: 20px;
+      color: #0f766e;
+      border-left: 5px solid #16a34a;
+      padding-left: 12px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+      margin-bottom: 40px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 14px;
+      padding: 22px;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+    }
+
+    .card h3 {
+      margin-bottom: 10px;
+      color: #111827;
+      font-size: 1.1rem;
+    }
+
+    .card p {
+      font-size: 0.95rem;
+      margin-bottom: 15px;
+      color: #4b5563;
+    }
+
+    .card a {
+      display: inline-block;
+      text-decoration: none;
+      background: #0f766e;
+      color: white;
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-size: 0.95rem;
+    }
+
+    .card a:hover {
+      background: #115e59;
+    }
+
+    footer {
+      text-align: center;
+      padding: 25px 15px;
+      background: #111827;
+      color: #d1d5db;
+      margin-top: 40px;
+    }
+
+    .small-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 15px;
+    }
+
+    .small-links a {
+      text-decoration: none;
+      color: #0f766e;
+      font-weight: bold;
+    }
+
+    .small-links a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
 <body>
 
   <header>
-    <h1>Sustainability Governance Platform</h1>
-    <p>Welcome to SustainGate Solutions</p>
+    <img src="Logo.png" alt="SustainGate Logo">
+    <h1>SustainGate Sustainability Solutions</h1>
+    <p>
+      Explore our sustainability governance, compliance, carbon reduction,
+      traceability, and industry-specific digital solutions.
+    </p>
   </header>
 
-  <nav>
-    <ul>
-      <li><a href="SustainGate.html">SustainGate</a></li>
-      <li><a href="SustainZGate.html">SustainZGate</a></li>
-      <li><a href="SustainZ1Gate.html">SustainZ1Gate</a></li>
-      <li><a href="Carbon_Reduction.html">Carbon Reduction</a></li>
-      <li><a href="EPR_Compliance.html">EPR Compliance</a></li>
-      <li><a href="EUDR_Compliance.html">EUDR Compliance</a></li>
-    </ul>
-  </nav>
+  <main class="container">
 
-  <section>
-    <h2>Industry Solutions</h2>
-    <ul>
-      <li><a href="healthcare-industry.html">Healthcare</a></li>
-      <li><a href="aviation-industry.html">Aviation</a></li>
-      <li><a href="fashion-industry.html">Fashion</a></li>
-      <li><a href="facilities-management.html">Facilities Management</a></li>
-    </ul>
-  </section>
+    <section>
+      <h2 class="section-title">Core Platforms</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>SustainGate</h3>
+          <p>Main sustainability solution platform overview.</p>
+          <a href="SustainGate.html">Open Page</a>
+        </div>
 
-  <section>
-    <h2>Governance & SME Solutions</h2>
-    <ul>
-      <li><a href="Sustainability Governance Platform.html">Governance Platform</a></li>
-      <li><a href="Sustainability Governance for SMEs.html">SME Governance</a></li>
-      <li><a href="SME Solution - Traceability_MRV_Platform.html">Traceability Platform</a></li>
-    </ul>
-  </section>
+        <div class="card">
+          <h3>SustainZGate</h3>
+          <p>Access the SustainZGate platform page.</p>
+          <a href="SustainZGate.html">Open Page</a>
+        </div>
+
+        <div class="card">
+          <h3>SustainZ1Gate</h3>
+          <p>Explore the SustainZ1Gate solution page.</p>
+          <a href="SustainZ1Gate.html">Open Page</a>
+        </div>
+
+        <div class="card">
+          <h3>SustainGate Final</h3>
+          <p>Alternative or final version of the SustainGate page.</p>
+          <a href="sustaingate-final.html">Open Page</a>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="section-title">Compliance & Carbon Solutions</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>Carbon Reduction</h3>
+          <p>View carbon reduction strategies and related services.</p>
+          <a href="Carbon_Reduction.html">Open Page</a>
+        </div>
+
+        <div class="card">
+          <h3>EPR Compliance</h3>
+          <p>Extended Producer Responsibility compliance solution.</p>
+          <a href="EPR_Compliance.html">Open Page</a>
+        </div>
+
+        <div class="card">
+          <h3>EUDR Compliance</h3>
+          <p>European Union Deforestation Regulation compliance support.</p>
+          <a href="EUDR_Compliance.html">Open Page</a>
+        </div>
+
+        <div class="card">
+          <h3>Traceability MRV Platform</h3>
+          <p>Monitoring, reporting, verification, and traceability tools.</p>
+          <a href="traceability-mrv-platform.html">Open Page</a>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="section-title">Governance Solutions</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>Sustainability Governance Platform</h3>
+          <p>Enterprise governance tools for sustainability and reporting.</p>
+          <a href="sustainability-governance-platform.html">Open Page</a>
+        </div>
+
+        <div class="card">
+          <h3>SME Governance</h3>
+          <p>Governance support tailored for small and medium enterprises.</p>
+          <a href="sme-governance.html">Open Page</a>
+        </div>
+
+        <div class="card">
+          <h3>NHS Channel Strategy</h3>
+          <p>Strategic healthcare and NHS-focused sustainability content.</p>
+          <a href="nhs-channel-strategy.html">Open Page</a>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="section-title">Industry Solutions</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>Healthcare Industry</h3>
+          <p>Healthcare sustainability and compliance solutions.</p>
+          <a href="healthcare-industry.html">Open Page</a>
+        </div>
+
+        <div class="card">
+          <h3>Healthcare Learn More</h3>
+          <p>Additional healthcare industry details and supporting content.</p>
+          <a href="healthcare-industry-learn-more.html">Open Page</a>
+        </div>
+
+        <div class="card">
+          <h3>SustainZone Healthcare</h3>
+          <p>Healthcare-specific SustainZone solution page.</p>
+          <a href="sustainzone-healthcare-industry.html">Open Page</a>
+        </div>
+
+        <div class="card">
+          <h3>Aviation Industry</h3>
+          <p>Aviation sustainability and operational support solutions.</p>
+          <a href="aviation-industry.html">Open Page</a>
+        </div>
+
+        <div class="card">
+          <h3>Aviation Learn More</h3>
+          <p>Additional aviation industry insights and service details.</p>
+          <a href="aviation-industry-learn-more.html">Open Page</a>
+        </div>
+
+        <div class="card">
+          <h3>Fashion Industry</h3>
+          <p>Fashion sustainability, traceability, and compliance solutions.</p>
+          <a href="fashion-industry.html">Open Page</a>
+        </div>
+
+        <div class="card">
+          <h3>Fashion Learn More</h3>
+          <p>Supporting information for the fashion industry page.</p>
+          <a href="fashion-industry-learn-more.html">Open Page</a>
+        </div>
+
+        <div class="card">
+          <h3>Facilities Management</h3>
+          <p>Facilities management sustainability services and tools.</p>
+          <a href="facilities-management.html">Open Page</a>
+        </div>
+
+        <div class="card">
+          <h3>Facilities Learn More</h3>
+          <p>Additional facilities management information and resources.</p>
+          <a href="facilities-management-learn-more.html">Open Page</a>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="section-title">Project Assets</h2>
+      <p>
+        Your repository also includes supporting files like CSS and JavaScript:
+      </p>
+      <div class="small-links">
+        <a href="style.css">style.css</a>
+        <a href="base.css">base.css</a>
+        <a href="app.css">app.css</a>
+        <a href="app.js">app.js</a>
+      </div>
+    </section>
+
+  </main>
 
   <footer>
-    <p>© 2026 SustainGate</p>
+    <p>© 2026 SustainGate. All rights reserved.</p>
   </footer>
 
 </body>
