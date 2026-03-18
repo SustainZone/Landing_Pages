@@ -224,9 +224,20 @@
 
     /* ─── DEADLINE BANNER ────────────────────────────────────── */
     .deadline-banner {
-      background: linear-gradient(90deg, #1a0f02 0%, #3d2005 100%);
+     background:
+     linear-gradient(
+      90deg,
+      rgba(26, 15, 2, 0.85),
+      rgba(61, 32, 5, 0.85)
+     ),
+      url('https://images.pexels.com/photos/40568/medical-appointment-doctor-healthcare-40568.jpeg');
+
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+
       padding: 56px 5%;
-    }
+     }
     .deadline-inner {
       max-width: 1160px; margin: 0 auto;
       display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0;
