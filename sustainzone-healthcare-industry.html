@@ -124,30 +124,62 @@
 
     /* ─── URGENCY TICKER ─────────────────────────────────────── */
     .ticker {
-      background: #0a1a2b;
-      padding: 14px 5%;
-      display: flex; align-items: center; gap: 20px;
-      overflow: hidden;
-    }
-    .ticker-label {
-      background: var(--red); color: white;
-      font-size: 0.72rem; font-weight: 700; letter-spacing: 0.06em;
-      text-transform: uppercase; padding: 4px 12px; border-radius: 4px;
-      white-space: nowrap; flex-shrink: 0;
-    }
-    .ticker-items {
-      display: flex; gap: 48px;
-      animation: ticker 28s linear infinite;
-      white-space: nowrap;
-    }
-    .ticker-items span {
-      color: rgba(255,255,255,0.75); font-size: 0.85rem; font-weight: 500;
-    }
-    .ticker-items strong { color: var(--accent); }
-    @keyframes ticker {
-      0%   { transform: translateX(0); }
-      100% { transform: translateX(-50%); }
-    }
+  background: #0a1a2b;
+  padding: 14px 5%;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  position: relative;
+  gap: 18px;
+}
+
+.ticker-label {
+  background: var(--red);
+  color: white;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 4px 12px;
+  border-radius: 4px;
+  white-space: nowrap;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 2;
+}
+
+.ticker-track {
+  flex: 1;
+  overflow: hidden;
+  position: relative;
+}
+
+.ticker-items {
+  display: inline-flex;
+  gap: 48px;
+  white-space: nowrap;
+  padding-left: 8px;
+  animation: ticker 28s linear infinite;
+}
+
+.ticker-items span {
+  color: rgba(255,255,255,0.75);
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.ticker-items strong {
+  color: var(--accent);
+}
+
+@keyframes ticker {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
 
     /* ─── SECTION COMMON ─────────────────────────────────────── */
     section { padding: 88px 5%; }
@@ -366,37 +398,143 @@
     }
     .service-card ul li::before { content: '✓'; color: var(--lime); font-weight: 700; }
 
-    /* ─── ROADMAP ─────────────────────────────────────────────── */
-    .roadmap-section { background: var(--white); }
-    .roadmap-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 48px; }
-    .roadmap-phase {
-      background: var(--body-bg); border-radius: 14px; padding: 36px;
-      position: relative; overflow: hidden;
-    }
-    .roadmap-phase::before {
-      content: '';
-      position: absolute; top: 0; left: 0;
-      width: 5px; height: 100%;
-    }
-    .roadmap-phase.p1::before { background: var(--lime); }
-    .roadmap-phase.p2::before { background: var(--teal-mid); }
-    .phase-timeline {
-      font-size: 0.78rem; font-weight: 700; letter-spacing: 0.08em;
-      text-transform: uppercase; color: var(--teal-mid); margin-bottom: 6px;
-    }
-    .roadmap-phase h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 6px; }
-    .phase-cost {
-      display: inline-block; font-size: 0.8rem; font-weight: 600;
-      background: rgba(43,191,191,0.12); color: var(--teal);
-      padding: 3px 12px; border-radius: 20px; margin-bottom: 18px;
-    }
-    .roadmap-phase ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
-    .roadmap-phase ul li {
-      font-size: 0.875rem; color: var(--slate);
-      display: flex; gap: 10px; align-items: flex-start;
-    }
-    .roadmap-phase ul li strong { color: var(--navy); }
-    .roadmap-phase ul li::before { content: '→'; color: var(--accent); font-weight: 700; flex-shrink: 0; }
+/* ─── ROADMAP ─────────────────────────────────────────────── */
+.roadmap-section {
+  background: var(--white);
+}
+
+.roadmap-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  margin-top: 56px;
+}
+
+.roadmap-phase {
+  background: linear-gradient(180deg, #ffffff 0%, #fbfdff 100%);
+  border-radius: 18px;
+  padding: 34px 32px 30px;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid #e6edf3;
+  box-shadow: 0 12px 32px rgba(13,33,55,0.06);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.roadmap-phase:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 42px rgba(13,33,55,0.10);
+}
+
+.roadmap-phase::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 6px;
+}
+
+.roadmap-phase.p1::before {
+  background: linear-gradient(90deg, var(--lime), #7ed6ab);
+}
+
+.roadmap-phase.p2::before {
+  background: linear-gradient(90deg, var(--teal-mid), var(--accent));
+}
+
+.phase-timeline {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--teal-mid);
+  margin-bottom: 10px;
+}
+
+.roadmap-phase h3 {
+  font-size: 1.45rem;
+  font-weight: 700;
+  margin-bottom: 14px;
+  color: var(--navy);
+  line-height: 1.2;
+}
+
+.level-sep {
+  display: inline-block;
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--teal-mid);
+  background: rgba(43,191,191,0.10);
+  border: 1px solid rgba(43,191,191,0.16);
+  padding: 4px 9px;
+  border-radius: 999px;
+  vertical-align: middle;
+  margin: 0 8px;
+}
+
+.phase-cost {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 700;
+  background: rgba(43,191,191,0.12);
+  color: var(--teal);
+  padding: 8px 16px;
+  border-radius: 999px;
+  margin-bottom: 24px;
+  border: 1px solid rgba(43,191,191,0.18);
+}
+
+.roadmap-phase ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.roadmap-phase ul li {
+  position: relative;
+  display: grid;
+  grid-template-columns: 170px 1fr;
+  gap: 22px;
+  align-items: start;
+  padding: 20px 0 20px 26px;
+  border-bottom: 1px solid #edf2f7;
+  font-size: 0.92rem;
+  color: var(--slate);
+  line-height: 1.7;
+}
+
+.roadmap-phase ul li:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.roadmap-phase ul li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 28px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+.roadmap-phase ul li strong {
+  display: block;
+  color: var(--navy);
+  font-weight: 700;
+  font-size: 0.98rem;
+  line-height: 1.45;
+}
+
+.roadmap-phase ul li span {
+  display: block;
+  color: var(--slate);
+}
 
     /* ─── TESTIMONIAL ────────────────────────────────────────── */
     .testimonial-section {
@@ -488,15 +626,18 @@
 <!-- ───── TICKER ───── -->
 <div class="ticker">
   <span class="ticker-label">⚠ URGENT</span>
-  <div class="ticker-items">
-    <span>🔴 <strong>April 2026:</strong> Evergreen Level 1 mandatory for ALL NHS Supply Chain frameworks</span>
-    <span>⚡ <strong>Level 1 alone is no longer competitive</strong> — live tenders already require Level 2 &amp; 3</span>
-    <span>📅 <strong>April 2027:</strong> All suppliers must publish global Scope 1, 2 &amp; 3 CRPs</span>
-    <span>🏆 Social value scoring = <strong>10–30% of tender weighting</strong> — higher Evergreen levels win more</span>
-    <span>🔴 <strong>April 2026:</strong> Evergreen Level 1 mandatory for ALL NHS Supply Chain frameworks</span>
-    <span>⚡ <strong>Level 1 alone is no longer competitive</strong> — live tenders already require Level 2 &amp; 3</span>
-    <span>📅 <strong>April 2027:</strong> All suppliers must publish global Scope 1, 2 &amp; 3 CRPs</span>
-    <span>🏆 Social value scoring = <strong>10–30% of tender weighting</strong> — higher Evergreen levels win more</span>
+  <div class="ticker-track">
+    <div class="ticker-items">
+      <span>🔴 <strong>April 2026:</strong> Evergreen Level 1 mandatory for ALL NHS Supply Chain frameworks</span>
+      <span>⚡ <strong>Level 1 alone is no longer competitive</strong> — live tenders already require Level 2 &amp; 3</span>
+      <span>📅 <strong>April 2027:</strong> All suppliers must publish global Scope 1, 2 &amp; 3 CRPs</span>
+      <span>🏆 Social value scoring = <strong>10–30% of tender weighting</strong> — higher Evergreen levels win more</span>
+
+      <span>🔴 <strong>April 2026:</strong> Evergreen Level 1 mandatory for ALL NHS Supply Chain frameworks</span>
+      <span>⚡ <strong>Level 1 alone is no longer competitive</strong> — live tenders already require Level 2 &amp; 3</span>
+      <span>📅 <strong>April 2027:</strong> All suppliers must publish global Scope 1, 2 &amp; 3 CRPs</span>
+      <span>🏆 Social value scoring = <strong>10–30% of tender weighting</strong> — higher Evergreen levels win more</span>
+    </div>
   </div>
 </div>
 
@@ -851,39 +992,82 @@
   </div>
 </section>
 
-<!-- ───── ROADMAP ───── -->
 <section class="roadmap-section">
   <div class="container">
     <span class="section-label">Practical Steps</span>
     <h2 class="section-title">The Race to Level 2 Has Already Begun</h2>
     <div class="divider"></div>
-    <p class="section-sub">Based on our experience supporting NHS suppliers, here is a realistic, costed view of what progression looks like — so you can plan with confidence.</p>
 
     <div class="roadmap-grid">
+
+      <!-- LEFT CARD -->
       <div class="roadmap-phase p1">
         <div class="phase-timeline">Estimated 6–12 months</div>
-        <h3>Level 1 → Level 2</h3>
+        <h3>Level 1 <span class="level-sep">to</span> Level 2</h3>
         <span class="phase-cost">Typical industry cost: £10,000–£50,000</span>
+
         <ul>
-          <li><strong>Full Scope 3 Carbon Footprint</strong> — Screen all 15 GHG Protocol categories (not just the 5 required at Level 1). Estimated: £5,000–£25,000.</li>
-          <li><strong>Corporate Social Value Programme</strong> — Community engagement, diversity &amp; inclusion, volunteering, health/wellbeing aligned to PPN 002's Five Missions.</li>
-          <li><strong>Modern Slavery Statement</strong> — Required at Level 2 even if below the £36m legislative threshold. Plus due diligence processes for supply chain risk.</li>
-          <li><strong>Environmental Management System</strong> — ISO 14001 provides systematic infrastructure. Certification: ~£3,000–£10,000 in Year 1.</li>
-          <li><strong>Supply Chain Engagement</strong> — Begin engaging Tier 1 suppliers on their own carbon reporting and sustainability expectations.</li>
+          <li>
+            <strong>Full Scope 3 Carbon Footprint</strong>
+            <span>Screen all 15 GHG Protocol categories (not just the 5 required at Level 1). Estimated: £5,000–£25,000.</span>
+          </li>
+
+          <li>
+            <strong>Corporate Social Value Programme</strong>
+            <span>Community engagement, diversity and inclusion, volunteering, and wellbeing aligned to PPN 002’s Five Missions.</span>
+          </li>
+
+          <li>
+            <strong>Modern Slavery Statement</strong>
+            <span>Required at Level 2 even if below the £36m threshold, with supply chain due diligence.</span>
+          </li>
+
+          <li>
+            <strong>Environmental Management System</strong>
+            <span>ISO 14001 provides structured infrastructure. Certification: ~£3,000–£10,000.</span>
+          </li>
+
+          <li>
+            <strong>Supply Chain Engagement</strong>
+            <span>Engage Tier 1 suppliers on carbon reporting and sustainability expectations.</span>
+          </li>
         </ul>
       </div>
+
+      <!-- RIGHT CARD -->
       <div class="roadmap-phase p2">
         <div class="phase-timeline">Estimated 12–24 months additional</div>
-        <h3>Level 2 → Level 3</h3>
+        <h3>Level 2 <span class="level-sep">to</span> Level 3</h3>
         <span class="phase-cost">Typical industry cost: £30,000–£130,000+</span>
+
         <ul>
-          <li><strong>Science-Based Targets (SBTi)</strong> — Commit, develop, and validate targets (near-term ~40 business days, net-zero ~60 days). SBTi costs: £1,980 (SMEs) to £16,731+.</li>
-          <li><strong>Global Emissions Boundary</strong> — Expand from UK-only to all global facilities, operations, and subsidiaries. Cost: £5,000–£30,000.</li>
-          <li><strong>2045 Net Zero Target</strong> — Accelerate commitment to align with NHS Carbon Footprint Plus timeline, supported by a credible SBTi-validated reduction pathway.</li>
-          <li><strong>Third-Party Verification</strong> — Independent emissions verification by SGS, Bureau Veritas, LRQA, or BSI. Cost: ~£5,000–£20,000.</li>
-          <li><strong>Board-Level Governance</strong> — Appoint sustainability lead, integrate sustainability KPIs into executive performance frameworks, TCFD/UK SRS alignment.</li>
+          <li>
+            <strong>Science-Based Targets (SBTi)</strong>
+            <span>Commit, develop, and validate targets. Near-term ~40 days, net-zero ~60 days.</span>
+          </li>
+
+          <li>
+            <strong>Global Emissions Boundary</strong>
+            <span>Expand from UK-only to global operations and subsidiaries.</span>
+          </li>
+
+          <li>
+            <strong>2045 Net Zero Target</strong>
+            <span>Align with NHS Carbon Footprint Plus using a credible reduction pathway.</span>
+          </li>
+
+          <li>
+            <strong>Third-Party Verification</strong>
+            <span>Independent emissions verification via SGS, BSI, or Bureau Veritas.</span>
+          </li>
+
+          <li>
+            <strong>Board-Level Governance</strong>
+            <span>Embed sustainability into leadership, KPIs, and reporting frameworks.</span>
+          </li>
         </ul>
       </div>
+
     </div>
   </div>
 </section>
