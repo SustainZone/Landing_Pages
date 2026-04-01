@@ -374,29 +374,96 @@
     .swing-box p { color: rgba(255,255,255,0.8); font-size: 1rem; margin-top: 12px; max-width: 480px; margin-left: auto; margin-right: auto; }
 
     /* ─── HOW WE HELP ────────────────────────────────────────── */
-    .how-we-help { background: var(--teal-lt); }
-    .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 48px; }
-    .service-card {
-      background: white; border-radius: 14px;
-      padding: 32px 28px; box-shadow: var(--card-shadow);
-    }
-    .service-icon {
-      width: 52px; height: 52px; border-radius: 12px;
-      background: var(--teal-lt); color: var(--teal);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.4rem; margin-bottom: 18px;
-    }
-    .service-card h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 10px; }
-    .service-card p { font-size: 0.875rem; color: var(--slate); line-height: 1.6; }
-    .service-card ul {
-      list-style: none; margin-top: 14px;
-      display: flex; flex-direction: column; gap: 7px;
-    }
-    .service-card ul li {
-      font-size: 0.82rem; color: var(--slate);
-      display: flex; gap: 8px;
-    }
-    .service-card ul li::before { content: '✓'; color: var(--lime); font-weight: 700; }
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 26px;
+  margin-top: 48px;
+}
+
+.service-card {
+  background: white;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 12px 32px rgba(13,33,55,0.06);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  border: 1px solid #e7edf3;
+}
+
+.service-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 50px rgba(13,33,55,0.10);
+}
+
+.service-image {
+  width: 100%;
+  height: 150px;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+/* overlay */
+.service-image::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(13,33,55,0.2), rgba(13,33,55,0.5));
+}
+
+/* icon on top of image */
+.service-icon {
+  position: absolute;
+  bottom: -22px;
+  left: 20px;
+  width: 46px;
+  height: 46px;
+  border-radius: 12px;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+  z-index: 2;
+}
+
+.service-body {
+  padding: 36px 24px 26px;
+}
+
+.service-card h3 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.service-card p {
+  font-size: 0.88rem;
+  color: var(--slate);
+  line-height: 1.6;
+}
+
+.service-card ul {
+  list-style: none;
+  margin-top: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.service-card ul li {
+  font-size: 0.82rem;
+  color: var(--slate);
+  display: flex;
+  gap: 8px;
+}
+
+.service-card ul li::before {
+  content: '✓';
+  color: var(--lime);
+  font-weight: 700;
+}
 
 /* ─── ROADMAP ─────────────────────────────────────────────── */
 .roadmap-section {
@@ -914,80 +981,120 @@
 </section>
 
 <!-- ───── HOW WE HELP ───── -->
+<!-- ───── HOW WE HELP ───── -->
 <section class="how-we-help" id="how-we-help">
   <div class="container">
     <span class="section-label">SustainZone Services</span>
     <h2 class="section-title">How SustainZone Supports Your Evergreen Journey</h2>
     <div class="divider"></div>
-    <p class="section-sub">We work from your side of the desk. Our approach is genuine co-creation — from gap analysis through to validated submission — so you build lasting capability, not just a one-time compliance tick.</p>
+    <p class="section-sub">
+      We work from your side of the desk. Our approach is genuine co-creation — from gap analysis through to validated submission — so you build lasting capability, not just a one-time compliance tick.
+    </p>
 
     <div class="services-grid">
+
+      <!-- 1 -->
       <div class="service-card">
-        <div class="service-icon">🔍</div>
-        <h3>Evergreen Gap Analysis</h3>
-        <p>We assess your current position against all four Evergreen levels, identifying exactly where you are, where the gaps lie, and what's needed to reach your target level.</p>
-        <ul>
-          <li>Current level assessment</li>
-          <li>Gap-by-gap action plan</li>
-          <li>Prioritised quick wins</li>
-          <li>Written report &amp; debrief</li>
-        </ul>
+        <div class="service-image" style="background-image: url('https://images.pexels.com/photos/8654753/pexels-photo-8654753.jpeg');">
+          <div class="service-icon">🔍</div>
+        </div>
+        <div class="service-body">
+          <h3>Evergreen Gap Analysis</h3>
+          <p>We assess your current position against all four Evergreen levels, identifying exactly where you are and what’s needed to progress.</p>
+          <ul>
+            <li>Current level assessment</li>
+            <li>Gap-by-gap action plan</li>
+            <li>Prioritised quick wins</li>
+            <li>Written report & debrief</li>
+          </ul>
+        </div>
       </div>
+
+      <!-- 2 -->
       <div class="service-card">
-        <div class="service-icon">📝</div>
-        <h3>Compliant Evergreen Submissions</h3>
-        <p>We build fully compliant Evergreen submissions on the Atamis platform — structured to strengthen your tender readiness and remove the stress, confusion and delays that hold suppliers back.</p>
-        <ul>
-          <li>Carbon Reduction Plan drafting</li>
-          <li>Modern slavery documentation</li>
-          <li>Social value programme design</li>
-          <li>Atamis platform submission support</li>
-        </ul>
+        <div class="service-image" style="background-image: url('https://images.pexels.com/photos/2928232/pexels-photo-2928232.jpeg');">
+          <div class="service-icon">📝</div>
+        </div>
+        <div class="service-body">
+          <h3>Compliant Evergreen Submissions</h3>
+          <p>We build fully compliant Evergreen submissions on the Atamis platform — structured to strengthen your tender readiness.</p>
+          <ul>
+            <li>Carbon Reduction Plan drafting</li>
+            <li>Modern slavery documentation</li>
+            <li>Social value programme design</li>
+            <li>Submission support</li>
+          </ul>
+        </div>
       </div>
+
+      <!-- 3 -->
       <div class="service-card">
-        <div class="service-icon">🗺</div>
-        <h3>Evergreen Assessment Roadmap</h3>
-        <p>For suppliers targeting Level 2 or 3, we build a tailored multi-year roadmap with phased milestones, cost estimates, and accountability structures to ensure you stay on track.</p>
-        <ul>
-          <li>Scope 3 carbon footprinting</li>
-          <li>SBTi validation pathway</li>
-          <li>Global boundary expansion</li>
-          <li>Board-level governance design</li>
-        </ul>
+        <div class="service-image" style="background-image: url('https://images.pexels.com/photos/16470127/pexels-photo-16470127.jpeg');">
+          <div class="service-icon">🗺</div>
+        </div>
+        <div class="service-body">
+          <h3>Evergreen Assessment Roadmap</h3>
+          <p>We build tailored multi-year roadmaps with phased milestones, cost estimates, and accountability structures.</p>
+          <ul>
+            <li>Scope 3 carbon footprinting</li>
+            <li>SBTi validation pathway</li>
+            <li>Global boundary expansion</li>
+            <li>Board-level governance design</li>
+          </ul>
+        </div>
       </div>
+
+      <!-- 4 -->
       <div class="service-card">
-        <div class="service-icon">📊</div>
-        <h3>Carbon Reporting &amp; Strategy</h3>
-        <p>From baseline carbon footprints (Scope 1, 2 &amp; 3) to Net Zero strategies with credible reduction pathways aligned to NHS timelines and the Science Based Targets initiative.</p>
-        <ul>
-          <li>GHG Protocol-aligned inventories</li>
-          <li>Spend-based Scope 3 screening</li>
-          <li>SBTi target-setting support</li>
-          <li>Annual reporting management</li>
-        </ul>
+        <div class="service-image" style="background-image: url('https://images.pexels.com/photos/7693744/pexels-photo-7693744.jpeg');">
+          <div class="service-icon">📊</div>
+        </div>
+        <div class="service-body">
+          <h3>Carbon Reporting & Strategy</h3>
+          <p>From baseline footprints to Net Zero strategies with credible reduction pathways aligned to NHS timelines.</p>
+          <ul>
+            <li>GHG Protocol inventories</li>
+            <li>Scope 3 screening</li>
+            <li>SBTi target setting</li>
+            <li>Annual reporting</li>
+          </ul>
+        </div>
       </div>
+
+      <!-- 5 -->
       <div class="service-card">
-        <div class="service-icon">⚖</div>
-        <h3>ISO 14001 &amp; EMS Support</h3>
-        <p>Environmental Management System certification provides the governance infrastructure for carbon measurement and target-setting that underpins Level 2 and 3 compliance.</p>
-        <ul>
-          <li>ISO 14001 gap analysis</li>
-          <li>Environmental policy development</li>
-          <li>Certification readiness support</li>
-          <li>ISO 50001 energy management</li>
-        </ul>
+        <div class="service-image" style="background-image: url('https://images.pexels.com/photos/33529936/pexels-photo-33529936.jpeg');">
+          <div class="service-icon">⚖</div>
+        </div>
+        <div class="service-body">
+          <h3>ISO 14001 & EMS Support</h3>
+          <p>Environmental Management System certification provides governance infrastructure for Level 2 and 3 compliance.</p>
+          <ul>
+            <li>ISO 14001 gap analysis</li>
+            <li>Policy development</li>
+            <li>Certification readiness</li>
+            <li>Energy management</li>
+          </ul>
+        </div>
       </div>
+
+      <!-- 6 -->
       <div class="service-card">
-        <div class="service-icon">🤝</div>
-        <h3>Fractional CSO Support</h3>
-        <p>For organisations that need sustained sustainability leadership without a full-time hire, our fractional Chief Sustainability Officer service provides expertise on demand.</p>
-        <ul>
-          <li>Board-level sustainability governance</li>
-          <li>Horizon scanning &amp; regulatory monitoring</li>
-          <li>Stakeholder &amp; tender response support</li>
-          <li>Knowledge transfer &amp; capability building</li>
-        </ul>
+        <div class="service-image" style="background-image: url('https://images.pexels.com/photos/6963622/pexels-photo-6963622.jpeg');">
+          <div class="service-icon">🤝</div>
+        </div>
+        <div class="service-body">
+          <h3>Fractional CSO Support</h3>
+          <p>On-demand sustainability leadership without a full-time hire, supporting governance and strategy execution.</p>
+          <ul>
+            <li>Board-level support</li>
+            <li>Regulatory monitoring</li>
+            <li>Tender support</li>
+            <li>Capability building</li>
+          </ul>
+        </div>
       </div>
+
     </div>
   </div>
 </section>
